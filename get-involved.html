@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Involved — Pacific Islanders for Progress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root { --blush:#f6eae8;--forest:#29543a;--bark:#4b3a32;--gold:#c8a96b;--ocean:#2f5d73;--white:#ffffff;--text:#1c1c1c;--muted:#5a5a5a;--nav-h:68px; }
+    *, *::before, *::after { box-sizing:border-box;margin:0;padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Inter',sans-serif;background:var(--white);color:var(--text);line-height:1.65; }
+    .skip-link { position:absolute;top:-40px;left:0;background:var(--forest);color:var(--white);padding:8px 16px;z-index:9999;transition:top .2s; }
+    .skip-link:focus { top:0; }
+
+    nav { position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:var(--white);border-bottom:1px solid rgba(41,84,58,.12);display:flex;align-items:center;padding:0 2rem;z-index:1000;transition:box-shadow .3s; }
+    nav.scrolled { box-shadow:0 2px 20px rgba(0,0,0,.08); }
+    .nav-inner { width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between; }
+    .nav-logo { font-family:'Fraunces',serif;font-size:1.05rem;font-weight:300;color:var(--forest);text-decoration:none;letter-spacing:-.01em;flex-shrink:0; }
+    .nav-links { display:flex;align-items:center;gap:.25rem;list-style:none; }
+    .nav-links > li { position:relative; }
+    .nav-links > li > a,.nav-links > li > button { font-family:'Inter',sans-serif;font-size:.85rem;font-weight:500;color:var(--bark);text-decoration:none;padding:.5rem .85rem;border-radius:6px;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.3rem;transition:color .2s,background .2s;white-space:nowrap; }
+    .nav-links > li > a:hover,.nav-links > li > button:hover { color:var(--forest);background:rgba(41,84,58,.06); }
+    .dropdown-arrow { font-size:.65rem;transition:transform .2s;display:inline-block; }
+    li.open .dropdown-arrow { transform:rotate(180deg); }
+    .dropdown { display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--white);border:1px solid rgba(41,84,58,.12);border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.1);min-width:220px;padding:.5rem 0;z-index:200; }
+    li.open .dropdown { display:block; }
+    .dropdown a { display:block;padding:.6rem 1.2rem;font-size:.83rem;color:var(--bark);text-decoration:none;transition:background .15s,color .15s; }
+    .dropdown a:hover { background:var(--blush);color:var(--forest); }
+    .dropdown-overview { font-weight:600;border-bottom:1px solid rgba(41,84,58,.1);margin-bottom:.3rem;color:var(--forest) !important; }
+    .nav-cta { background:var(--forest) !important;color:var(--white) !important;border-radius:6px !important;padding:.5rem 1.1rem !important;font-weight:600 !important;margin-left:.5rem; }
+    .nav-cta:hover { background:var(--bark) !important; }
+    .hamburger { display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px; }
+    .hamburger span { display:block;width:24px;height:2px;background:var(--bark);border-radius:2px; }
+
+    .page-hero { padding:calc(var(--nav-h) + 4rem) 2rem 4rem;background: linear-gradient(135deg, #29543a 0%, #3d4830 40%, #4b3a32 100%); }
+    .page-hero-inner { max-width:800px;margin:0 auto; }
+    .page-eyebrow { display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem; }
+    .page-title { font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--white);
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);line-height:1.15;margin-bottom:1.25rem; }
+    .page-title em { font-style:italic;color:var(--gold);font-weight:300; }
+    .page-lead { font-size:1.05rem;color:rgba(246,234,232,.8);line-height:1.8; }
+
+    .btn { display:inline-flex;align-items:center;padding:.75rem 1.6rem;border-radius:6px;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .2s;border:2px solid transparent;cursor:pointer; }
+    .btn-primary { background:var(--gold);color:var(--bark); }
+    .btn-primary:hover { background:#d4b87a; }
+    .btn-forest { background:var(--forest);color:var(--white); }
+    .btn-forest:hover { background:#1e3f2b; }
+    .btn-ocean { background:var(--ocean);color:var(--white); }
+    .btn-ocean:hover { background:#244a5d; }
+    .btn-bark { background:var(--bark);color:var(--white); }
+    .btn-bark:hover { background:#3a2c26; }
+    .btn-lg { padding:1rem 2.2rem;font-size:.95rem; }
+
+    section { padding:5.5rem 2rem; }
+    .section-inner { max-width:1100px;margin:0 auto; }
+    .section-eyebrow { display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem; }
+    .section-title { font-family:'Fraunces',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:300;color:var(--bark);line-height:1.2;margin-bottom:1rem; 
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+    }
+    .section-title em { font-style:italic;color:var(--forest);font-weight:300; }
+    .section-text { font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;max-width:680px; }
+
+    /* JOIN */
+    #join { background:var(--blush); }
+    .join-grid { display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem; }
+    .join-benefits { list-style:none; }
+    .join-benefits li { padding:.65rem 0 .65rem 1.3rem;position:relative;font-size:.92rem;color:var(--muted);line-height:1.6;border-bottom:1px solid rgba(75,58,50,.08); }
+    .join-benefits li:last-child { border-bottom:none; }
+    .join-benefits li::before { content:'✓';position:absolute;left:0;color:var(--forest);font-weight:700; }
+    .join-cta-box { background:var(--white);border-radius:14px;padding:2.5rem;box-shadow:0 4px 20px rgba(0,0,0,.06); }
+    .join-cta-box h3 { font-family:'Fraunces',serif;font-size:1.3rem;font-weight:300;color:var(--bark);margin-bottom:.75rem; 
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+    }
+    .join-cta-box p { font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:1.5rem; }
+
+    /* PARTNER */
+    #partner { background:var(--white); }
+    .partner-form { max-width:620px; }
+    .form-row { display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem; }
+    .form-group { display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem; }
+    .form-group label { font-size:.8rem;font-weight:600;color:var(--bark);letter-spacing:.04em; }
+    .form-group input,.form-group textarea,.form-group select {
+      padding:.7rem .9rem;border:1.5px solid rgba(75,58,50,.2);border-radius:8px;font-family:'Inter',sans-serif;font-size:.88rem;color:var(--text);background:var(--white);transition:border-color .2s;outline:none;
+    }
+    .form-group input:focus,.form-group textarea:focus,.form-group select:focus { border-color:var(--forest); }
+    .form-group textarea { resize:vertical;min-height:110px; }
+    .form-note { font-size:.78rem;color:var(--muted);margin-top:.25rem; }
+
+    /* DONATE */
+    #donate { background:var(--forest); }
+    .donate-title { font-family:'Fraunces',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:300;color:var(--white);
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);margin-bottom:.75rem; }
+    .donate-title em { font-style:italic;color:var(--gold);font-weight:300; }
+    .donate-lead { font-size:1rem;color:rgba(246,234,232,.8);line-height:1.8;max-width:600px;margin-bottom:2.5rem; }
+    .donate-ways { display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem; }
+    .donate-way { background:rgba(246,234,232,.07);border:1px solid rgba(246,234,232,.15);border-radius:12px;padding:1.75rem; }
+    .donate-way-icon { font-size:1.75rem;margin-bottom:.75rem;display:block; }
+    .donate-way-title { font-family:'Fraunces',serif;font-size:1.05rem;font-weight:300;color:var(--white);margin-bottom:.5rem; }
+    .donate-way-text { font-size:.83rem;color:rgba(246,234,232,.7);line-height:1.65; }
+
+    footer { background:var(--bark);color:rgba(246,234,232,.75);padding:4rem 2rem 2rem; }
+    .footer-inner { max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem; }
+    .footer-brand .footer-logo { font-family:'Fraunces',serif;font-size:1.15rem;font-weight:300;color:var(--white);display:block;margin-bottom:.75rem; 
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+    }
+    .footer-tagline { font-size:.83rem;line-height:1.7;margin-bottom:1.25rem; }
+    .footer-socials { display:flex;gap:.65rem; }
+    .footer-socials a { display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:rgba(246,234,232,.1);border-radius:6px;text-decoration:none;font-size:.85rem;transition:background .2s; }
+    .footer-socials a:hover { background:rgba(246,234,232,.2); }
+    .footer-col h4 { font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem; }
+    .footer-col ul { list-style:none; }
+    .footer-col ul li { margin-bottom:.55rem; }
+    .footer-col ul li a,.footer-col a { font-size:.84rem;color:rgba(246,234,232,.7);text-decoration:none;transition:color .2s; }
+    .footer-col ul li a:hover,.footer-col a:hover { color:var(--white); }
+    .footer-col p { font-size:.84rem;line-height:1.7; }
+    .footer-bottom { max-width:1200px;margin:3rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(246,234,232,.1);display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(246,234,232,.45);flex-wrap:wrap;gap:.5rem; }
+
+    .reveal { opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease; }
+    .reveal.visible { opacity:1;transform:none; }
+    @media (prefers-reduced-motion:reduce) { .reveal { opacity:1;transform:none; } }
+
+    @media (max-width:900px) {
+      .join-grid { grid-template-columns:1fr; }
+      .donate-ways { grid-template-columns:1fr; }
+      .form-row { grid-template-columns:1fr; }
+      .footer-inner { grid-template-columns:1fr 1fr; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+    }
+    @media (max-width:600px) { .footer-inner { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Pacific Islanders for Progress</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li id="about-menu"><button onclick="toggleDropdown('about-menu')" aria-expanded="false">About <span class="dropdown-arrow">▾</span></button><div class="dropdown"><a href="about.html" class="dropdown-overview">About — Overview</a><a href="about.html#mission">Our Mission</a><a href="about.html#story">Our Story</a></div></li>
+        <li id="work-menu"><button onclick="toggleDropdown('work-menu')" aria-expanded="false">Our Work <span class="dropdown-arrow">▾</span></button><div class="dropdown"><a href="our-work.html" class="dropdown-overview">Our Work — Overview</a><a href="our-work.html#research">Evidence-Based Research</a><a href="our-work.html#coalition">Coalition-Building</a><a href="our-work.html#advocacy">Policy Advocacy</a></div></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li id="involve-menu"><button onclick="toggleDropdown('involve-menu')" aria-expanded="false">Get Involved <span class="dropdown-arrow">▾</span></button><div class="dropdown"><a href="get-involved.html" class="dropdown-overview">Get Involved — Overview</a><a href="get-involved.html#join">Join the Coalition</a><a href="get-involved.html#partner">Partner & Connect</a><a href="get-involved.html#donate">Donate</a></div></li>
+        <li><a href="#donate" class="nav-cta">Donate</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="page-hero">
+      <div class="page-hero-inner reveal">
+        <span class="page-eyebrow">Get Involved</span>
+        <h1 class="page-title">Three ways to <em>join the work.</em></h1>
+        <p class="page-lead">Whether you organize, research, advocate, or fund — there's a place for you in this coalition. Pacific Islanders for Progress is stronger when our community moves together.</p>
+      </div>
+    </div>
+
+    <section id="join">
+      <div class="section-inner">
+        <div class="reveal">
+          <span class="section-eyebrow">01 — Join the Coalition</span>
+          <h2 class="section-title">Become part of a statewide <em>network.</em></h2>
+          <p class="section-text">PIP's coalition connects organizations and advocates across California into a shared agenda for Pacific Islander communities. When we move together, decision-makers take notice.</p>
+        </div>
+        <div class="join-grid">
+          <div class="reveal">
+            <ul class="join-benefits">
+              <li>Access to disaggregated data, research, and policy briefs</li>
+              <li>Coordinated advocacy campaigns and shared messaging</li>
+              <li>Invitations to coalition convenings and community events</li>
+              <li>Amplification of your organization's work through PIP's network</li>
+              <li>Connection to other Pacific Islander-serving organizations statewide</li>
+              <li>Talanoa-grounded relationship building across communities</li>
+            </ul>
+          </div>
+          <div class="join-cta-box reveal">
+            <h3>Ready to join?</h3>
+            <p>Join our Google Group to connect with coalition members, receive updates, and participate in shared advocacy. Open to organizations and individuals committed to Pacific Islander communities in California.</p>
+            <a href="https://groups.google.com/u/1/g/pacific-islanders-for-progress" target="_blank" rel="noopener" class="btn btn-forest btn-lg">Join the Coalition →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="partner">
+      <div class="section-inner">
+        <div class="reveal">
+          <span class="section-eyebrow">02 — Partner & Connect</span>
+          <h2 class="section-title">Explore <em>collaboration.</em></h2>
+          <p class="section-text">Whether you're a researcher, funder, institution, or advocate — complete the form below to initiate a dialogue. A team member will respond to discuss how we can work together.</p>
+        </div>
+        <div class="partner-form reveal">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="Your first name" />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Your last name" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@organization.org" />
+          </div>
+          <div class="form-group">
+            <label for="org">Organization (optional)</label>
+            <input type="text" id="org" placeholder="Your organization or affiliation" />
+          </div>
+          <div class="form-group">
+            <label for="interest">Area of Interest</label>
+            <select id="interest">
+              <option value="">Select one...</option>
+              <option>Research Collaboration</option>
+              <option>Coalition Membership</option>
+              <option>Policy Advocacy Partnership</option>
+              <option>Funding / Philanthropy</option>
+              <option>Media / Press Inquiry</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell us a bit about yourself and how you'd like to connect..."></textarea>
+          </div>
+          <p class="form-note" style="margin-bottom:1.25rem;">We typically respond within 3–5 business days.</p>
+          <button class="btn btn-ocean btn-lg" onclick="alert('Form submission coming soon — please email info@pacificislandersforprogress.org directly.')">Send Message</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="donate">
+      <div class="section-inner">
+        <div class="reveal">
+          <span class="section-eyebrow" style="color:var(--gold);">03 — Donate</span>
+          <h2 class="donate-title">Fuel the research, advocacy, <em>and organizing.</em></h2>
+          <p class="donate-lead">Pacific Islanders for Progress is a California nonprofit. Your support funds the disaggregated research, coalition infrastructure, and policy advocacy that makes Pacific Islander communities visible in the decisions that shape opportunity.</p>
+          <div class="donate-ways">
+            <div class="donate-way">
+              <span class="donate-way-icon">📊</span>
+              <div class="donate-way-title">Fund Research</div>
+              <p class="donate-way-text">Support the production of disaggregated data, fact sheets, and the flagship annual report on Pacific Islander education outcomes in California.</p>
+            </div>
+            <div class="donate-way">
+              <span class="donate-way-icon">🤝</span>
+              <div class="donate-way-title">Grow the Coalition</div>
+              <p class="donate-way-text">Help us convene partners, host community listening sessions, and build the infrastructure that makes collective advocacy possible.</p>
+            </div>
+            <div class="donate-way">
+              <span class="donate-way-icon">📢</span>
+              <div class="donate-way-title">Advance Advocacy</div>
+              <p class="donate-way-text">Enable PIP to show up at the tables where budgets are written and policies are made — with community voice and evidence in hand.</p>
+            </div>
+          </div>
+          <a href="mailto:info@pacificislandersforprogress.org?subject=Donation%20Inquiry" class="btn btn-primary btn-lg">Give Now →</a>
+          <p style="color:rgba(246,234,232,.55);font-size:.78rem;margin-top:1rem;">PIP is a California Nonprofit Corporation. Please contact us for donation details.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Pacific Islanders for Progress</span>
+        <p class="footer-tagline">Advancing evidence-based advocacy for Pacific Islander communities in California.<br>California Nonprofit Corporation</p>
+        <div class="footer-socials">
+          <a href="http://instagram.com/pacificislandersforprogress" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a href="https://www.linkedin.com/company/pacific-islanders-for-progress/" target="_blank" rel="noopener" aria-label="LinkedIn">💼</a>
+          <a href="https://www.facebook.com/profile.php?id=61590081346803" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="our-work.html">Our Work</a></li><li><a href="blog.html">Blog</a></li><li><a href="get-involved.html">Get Involved</a></li></ul></div>
+      <div class="footer-col"><h4>Get Involved</h4><ul><li><a href="#join">Join the Coalition</a></li><li><a href="#partner">Partner & Connect</a></li><li><a href="#donate">Donate</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><p><a href="mailto:info@pacificislandersforprogress.org">info@pacificislandersforprogress.org</a></p><p style="margin-top:.75rem;">California</p></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Pacific Islanders for Progress. All rights reserved.</span><span>pacificislandersforprogress.org</span></div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 10); });
+    function toggleDropdown(id) {
+      const li = document.getElementById(id); const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.nav-links > li').forEach(l => l.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+      const btn = li.querySelector('button'); if (btn) btn.setAttribute('aria-expanded', String(!isOpen));
+    }
+    document.addEventListener('click', e => { if (!e.target.closest('.nav-links > li')) document.querySelectorAll('.nav-links > li').forEach(l => l.classList.remove('open')); });
+    const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

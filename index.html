@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacific Islanders for Progress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Tokens ──────────────────────────────────────────── */
+    :root {
+      --blush:   #f6eae8;
+      --forest:  #29543a;
+      --bark:    #4b3a32;
+      --gold:    #c8a96b;
+      --ocean:   #2f5d73;
+      --white:   #ffffff;
+      --text:    #1c1c1c;
+      --muted:   #5a5a5a;
+      --nav-h:   68px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ── Skip link ───────────────────────────────────────── */
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--forest); color: var(--white);
+      padding: 8px 16px; z-index: 9999;
+      transition: top .2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ══════════════════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: var(--white);
+      border-bottom: 1px solid rgba(41,84,58,.12);
+      display: flex; align-items: center;
+      padding: 0 2rem;
+      z-index: 1000;
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+
+    .nav-inner {
+      width: 100%; max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--forest);
+      text-decoration: none;
+      letter-spacing: -.01em;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: .25rem;
+      list-style: none;
+    }
+
+    .nav-links > li { position: relative; }
+
+    .nav-links > li > a,
+    .nav-links > li > button {
+      font-family: 'Inter', sans-serif;
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--bark);
+      text-decoration: none;
+      padding: .5rem .85rem;
+      border-radius: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; gap: .3rem;
+      transition: color .2s, background .2s;
+      white-space: nowrap;
+    }
+    .nav-links > li > a:hover,
+    .nav-links > li > button:hover {
+      color: var(--forest);
+      background: rgba(41,84,58,.06);
+    }
+
+    .dropdown-arrow {
+      font-size: .65rem;
+      transition: transform .2s;
+      display: inline-block;
+    }
+    li.open .dropdown-arrow { transform: rotate(180deg); }
+
+    /* Dropdown panel */
+    .dropdown {
+      display: none;
+      position: absolute; top: calc(100% + 6px); left: 0;
+      background: var(--white);
+      border: 1px solid rgba(41,84,58,.12);
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.1);
+      min-width: 220px;
+      padding: .5rem 0;
+      z-index: 200;
+    }
+    li.open .dropdown { display: block; }
+
+    .dropdown a {
+      display: block;
+      padding: .6rem 1.2rem;
+      font-size: .83rem;
+      color: var(--bark);
+      text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+    .dropdown a:hover {
+      background: var(--blush);
+      color: var(--forest);
+    }
+    .dropdown-overview {
+      font-weight: 600;
+      border-bottom: 1px solid rgba(41,84,58,.1);
+      margin-bottom: .3rem;
+      color: var(--forest) !important;
+    }
+
+    /* Give Now nav CTA */
+    .nav-cta {
+      background: var(--forest) !important;
+      color: var(--white) !important;
+      border-radius: 6px !important;
+      padding: .5rem 1.1rem !important;
+      font-weight: 600 !important;
+      margin-left: .5rem;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--bark) !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--bark);
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      padding-top: var(--nav-h);
+      background: linear-gradient(135deg, #29543a 0%, #3d4830 40%, #4b3a32 100%);
+      display: flex; align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle wave texture */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,169,107,.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(47,93,115,.3) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 6rem 2rem 5rem;
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-headline {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+      margin-bottom: 1.5rem;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 300;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(246,234,232,.8);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: .75rem;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center;
+      padding: .75rem 1.6rem;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .2s;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--bark);
+    }
+    .btn-primary:hover { background: #d4b87a; }
+
+    .btn-outline {
+      background: transparent;
+      border-color: rgba(246,234,232,.4);
+      color: var(--white);
+    }
+    .btn-outline:hover {
+      background: rgba(246,234,232,.08);
+      border-color: rgba(246,234,232,.7);
+    }
+
+    /* Hero image side */
+    .hero-image-wrap {
+      position: relative;
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+    /* Stat badge */
+    .hero-badge {
+      position: absolute;
+      bottom: -1.5rem; left: -1.5rem;
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1rem 1.4rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,.15);
+    }
+    .hero-badge-num {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--forest);
+      line-height: 1;
+    }
+    .hero-badge-label {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: .2rem;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       INTRO STRIP
+    ══════════════════════════════════════════════════════ */
+    #intro {
+      background: var(--blush);
+      padding: 4rem 2rem;
+    }
+    .intro-inner {
+      max-width: 860px; margin: 0 auto; text-align: center;
+    }
+    .intro-inner blockquote {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--bark);
+      line-height: 1.55;
+      border-left: 4px solid var(--gold);
+      padding-left: 1.5rem;
+      text-align: left;
+      margin: 0 auto;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       SECTION SHARED
+    ══════════════════════════════════════════════════════ */
+    section { padding: 5.5rem 2rem; }
+
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .75rem;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 300;
+      color: var(--bark);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--forest);
+      font-weight: 300;
+    }
+
+    .section-lead {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       OUR WORK — 3 PILLARS
+    ══════════════════════════════════════════════════════ */
+    #our-work { background: var(--white); }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .pillar {
+      border: 1px solid rgba(75,58,50,.12);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      background: var(--white);
+    }
+    .pillar:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.08);
+    }
+
+    .pillar-img {
+      width: 100%; height: 200px;
+      object-fit: cover; display: block;
+    }
+
+    .pillar-body { padding: 1.75rem; }
+
+    .pillar-num {
+      font-family: 'Fraunces', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--blush);
+      line-height: 1;
+      margin-bottom: .75rem;
+    }
+
+    .pillar-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--bark);
+      margin-bottom: .75rem;
+    
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+    }
+
+    .pillar-text {
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .pillar-list {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    .pillar-list li {
+      font-size: .83rem;
+      color: var(--muted);
+      padding: .3rem 0 .3rem 1.1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .pillar-list li::before {
+      content: '→';
+      position: absolute; left: 0;
+      color: var(--gold);
+      font-size: .8rem;
+    }
+
+    .pillar-link {
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--forest);
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: .3rem;
+    }
+    .pillar-link:hover { color: var(--ocean); }
+
+    /* ══════════════════════════════════════════════════════
+       ABOUT STRIP
+    ══════════════════════════════════════════════════════ */
+    #about { background: var(--forest); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-img {
+      width: 100%; height: 440px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .about-content .section-title { color: var(--white); 
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+    }
+    .about-content .section-eyebrow { color: var(--gold); }
+
+    .about-text {
+      font-size: 1rem;
+      color: rgba(246,234,232,.85);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       GET INVOLVED
+    ══════════════════════════════════════════════════════ */
+    #get-involved { background: var(--blush); }
+
+    .involve-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .involve-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2.25rem 2rem;
+      text-align: center;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .involve-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.07);
+    }
+
+    .involve-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .involve-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--bark);
+      margin-bottom: .65rem;
+    
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+    }
+
+    .involve-text {
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-forest {
+      background: var(--forest);
+      color: var(--white);
+    }
+    .btn-forest:hover { background: #1e3f2b; }
+
+    .btn-ocean {
+      background: var(--ocean);
+      color: var(--white);
+    }
+    .btn-ocean:hover { background: #244a5d; }
+
+    .btn-bark {
+      background: var(--bark);
+      color: var(--white);
+    }
+    .btn-bark:hover { background: #3a2c26; }
+
+    /* ══════════════════════════════════════════════════════
+       COALITION LOGOS
+    ══════════════════════════════════════════════════════ */
+    #coalition {
+      background: var(--white);
+      padding: 4rem 2rem;
+    }
+
+    .coalition-label {
+      text-align: center;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .logo-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem 3rem;
+    }
+
+    .logo-row img {
+      height: 48px;
+      object-fit: contain;
+      filter: grayscale(100%) opacity(.55);
+      transition: filter .25s;
+    }
+    .logo-row img:hover { filter: none; }
+
+    /* ══════════════════════════════════════════════════════
+       REPORT CTA BANNER
+    ══════════════════════════════════════════════════════ */
+    #report-banner {
+      background: var(--ocean);
+      padding: 4rem 2rem;
+    }
+    .report-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .report-text h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: .5rem;
+    
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+    }
+    .report-text h2 em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 300;
+    }
+    .report-text p {
+      font-size: .9rem;
+      color: rgba(246,234,232,.8);
+    }
+
+    /* ══════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════ */
+    footer {
+      background: var(--bark);
+      color: rgba(246,234,232,.75);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--white);
+      display: block;
+      margin-bottom: .75rem;
+    
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+    }
+
+    .footer-tagline {
+      font-size: .83rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-socials {
+      display: flex; gap: .65rem;
+    }
+    .footer-socials a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px;
+      background: rgba(246,234,232,.1);
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: .85rem;
+      transition: background .2s;
+    }
+    .footer-socials a:hover { background: rgba(246,234,232,.2); }
+
+    .footer-col h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: .55rem; }
+    .footer-col ul li a {
+      font-size: .84rem;
+      color: rgba(246,234,232,.7);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+
+    .footer-col p {
+      font-size: .84rem;
+      line-height: 1.7;
+    }
+    .footer-col a {
+      color: rgba(246,234,232,.7);
+      text-decoration: none;
+    }
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      max-width: 1200px; margin: 3rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(246,234,232,.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .78rem;
+      color: rgba(246,234,232,.45);
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       SCROLL REVEAL
+    ══════════════════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-image-wrap { display: none; }
+      .pillars { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { height: 280px; }
+      .involve-cards { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .report-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ══════════════════════════════════════════════════════
+       NAV
+  ══════════════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Pacific Islanders for Progress</a>
+
+      <ul class="nav-links" id="nav-links">
+
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+
+        <li id="about-menu">
+          <button onclick="toggleDropdown('about-menu')" aria-expanded="false">
+            About <span class="dropdown-arrow">▾</span>
+          </button>
+          <div class="dropdown">
+            <a href="about.html" class="dropdown-overview">About — Overview</a>
+            <a href="about.html#mission">Our Mission</a>
+            <a href="about.html#story">Our Story</a>
+          </div>
+        </li>
+
+        <li id="work-menu">
+          <button onclick="toggleDropdown('work-menu')" aria-expanded="false">
+            Our Work <span class="dropdown-arrow">▾</span>
+          </button>
+          <div class="dropdown">
+            <a href="our-work.html" class="dropdown-overview">Our Work — Overview</a>
+            <a href="our-work.html#research">Evidence-Based Research</a>
+            <a href="our-work.html#coalition">Coalition-Building</a>
+            <a href="our-work.html#advocacy">Policy Advocacy</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="blog.html">Blog</a>
+        </li>
+
+        <li id="involve-menu">
+          <button onclick="toggleDropdown('involve-menu')" aria-expanded="false">
+            Get Involved <span class="dropdown-arrow">▾</span>
+          </button>
+          <div class="dropdown">
+            <a href="get-involved.html" class="dropdown-overview">Get Involved — Overview</a>
+            <a href="get-involved.html#join">Join the Coalition</a>
+            <a href="get-involved.html#partner">Partner & Connect</a>
+            <a href="get-involved.html#donate">Donate</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="get-involved.html#donate" class="nav-cta">Donate</a>
+        </li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════════ -->
+  <main id="main">
+    <section id="hero">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <span class="hero-eyebrow">Statewide Advocacy Coalition · California</span>
+          <h1 class="hero-headline">
+            Advancing Education and Economic Outcomes for<br>
+            <em>Pacific Islanders</em> in California
+          </h1>
+          <p class="hero-sub">
+            Through evidence-based research, policy advocacy, and coalition-building,
+            PIP works to make Pacific Islander communities visible in the data and
+            decisions that shape opportunity.
+          </p>
+          <div class="hero-actions">
+            <a href="about.html" class="btn btn-primary">Learn More</a>
+            <a href="our-work.html" class="btn btn-outline">Our Work</a>
+          </div>
+        </div>
+
+        <div class="hero-image-wrap">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/de227c1e-4a27-4fb2-9ede-49fb1de88010/iStock-2192016694+%282%29.jpg"
+            alt="Pacific Islander community members"
+          />
+          <div class="hero-badge">
+            <div class="hero-badge-num">11+</div>
+            <div class="hero-badge-label">Coalition Partners Statewide</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         INTRO QUOTE
+    ══════════════════════════════════════════════════════ -->
+    <section id="intro">
+      <div class="intro-inner reveal">
+        <blockquote>
+          Pacific Islanders remain among the most underserved and underrepresented communities
+          in California's education, workforce, and civic systems — yet are too often rendered
+          invisible in the data and policies that shape opportunity.
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         OUR WORK
+    ══════════════════════════════════════════════════════ -->
+    <section id="our-work">
+      <div class="section-inner">
+        <div class="reveal">
+          <span class="section-eyebrow">What We Do</span>
+          <h2 class="section-title">Three fronts. <em>One mission.</em></h2>
+          <p class="section-lead">
+            Lasting change requires both better evidence and more power behind
+            the decisions that affect our communities. Research makes the case.
+            The coalition informs shared priorities. Advocacy carries it forward.
+          </p>
+        </div>
+
+        <div class="pillars">
+          <div class="pillar reveal">
+            <img
+              class="pillar-img"
+              src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/8ea19c66-29bb-4275-9771-44550a22cb71/iStock-2214846154.jpg"
+              alt="Research"
+            />
+            <div class="pillar-body">
+              <div class="pillar-num">01</div>
+              <h3 class="pillar-title">Evidence-Based Research</h3>
+              <p class="pillar-text">
+                What isn't counted doesn't get changed. We produce disaggregated,
+                community-grounded research that separates the data, names the
+                disparities, and gives advocates the evidence they need to act.
+              </p>
+              <ul class="pillar-list">
+                <li>Disaggregated education &amp; economic data</li>
+                <li>Outcomes across TK–12 &amp; postsecondary</li>
+                <li>Accessible briefs, fact sheets, and tools</li>
+              </ul>
+              <a href="our-work.html#research" class="pillar-link">Research Coming Soon →</a>
+            </div>
+          </div>
+
+          <div class="pillar reveal">
+            <img
+              class="pillar-img"
+              src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/89690cde-815f-4ab4-9981-9816d318e9c2/iStock-2242731715.jpg"
+              alt="Coalition"
+            />
+            <div class="pillar-body">
+              <div class="pillar-num">02</div>
+              <h3 class="pillar-title">Coalition-Building</h3>
+              <p class="pillar-text">
+                No single organization can shift systems alone. PIP organizes across
+                schools, universities, service providers, and community leaders —
+                turning shared values into collective power through <em>talanoa</em>.
+              </p>
+              <ul class="pillar-list">
+                <li>Statewide network with a shared agenda</li>
+                <li>Amplifying campaigns together</li>
+                <li>Culturally grounded relationship-building</li>
+              </ul>
+              <a href="https://groups.google.com/u/1/g/pacific-islanders-for-progress" class="pillar-link" target="_blank" rel="noopener">Join the Coalition →</a>
+            </div>
+          </div>
+
+          <div class="pillar reveal">
+            <img
+              class="pillar-img"
+              src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/ebed0335-59bf-485b-96f0-b612026f67b5/iStock-2266033802.jpg"
+              alt="Advocacy"
+            />
+            <div class="pillar-body">
+              <div class="pillar-num">03</div>
+              <h3 class="pillar-title">Policy Advocacy</h3>
+              <p class="pillar-text">
+                Good evidence only matters if it reaches the people who set budgets
+                and write policy. PIP brings Pacific Islander voices to the tables
+                where decisions are made.
+              </p>
+              <ul class="pillar-list">
+                <li>Equipping community members to speak up</li>
+                <li>Mobilizing coalition partners</li>
+                <li>Grounded in evidence and community voice</li>
+              </ul>
+              <a href="our-work.html#advocacy" class="pillar-link">Policy Priorities Coming Soon →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         ABOUT
+    ══════════════════════════════════════════════════════ -->
+    <section id="about">
+      <div class="section-inner">
+        <div class="about-grid">
+          <div class="reveal">
+            <img
+              class="about-img"
+              src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/1740593301.257073-BIQRZREBAQMYRPOUDXIU/imgg-gi3-b65jg9lc.png"
+              alt="Pacific Islanders for Progress community"
+            />
+          </div>
+          <div class="about-content reveal">
+            <span class="section-eyebrow">About PIP</span>
+            <h2 class="section-title">A statewide coalition <em>working to change that.</em></h2>
+            <p class="about-text">
+              Pacific Islanders for Progress (PIP) is a statewide grassroots advocacy coalition
+              that brings together community leaders, educators, researchers, and advocates to
+              advance accountability, strengthen public education systems, and ensure Pacific
+              Islander communities are fully supported to pursue postsecondary education and
+              pathways that lead to their flourishing.
+            </p>
+            <p class="about-text">
+              We address systemic inequities through strategic collaboration with community
+              leaders, universities, and partners — leveraging research to maximize collective
+              impact for Samoan, Tongan, Fijian, Chamorro, Marshallese, Chuukese, Hawaiian,
+              and other Oceanian communities in California.
+            </p>
+            <a href="about.html" class="btn btn-primary">Read Our Story</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         REPORT BANNER
+    ══════════════════════════════════════════════════════ -->
+    <section id="report-banner">
+      <div class="report-inner reveal">
+        <div class="report-text">
+          <h2>Flagship Report <em>Coming September 2026</em></h2>
+          <p>
+            "The State of Education of Pacific Islanders in California: Often Overlooked, Long Overdue" —
+            a critical 14-chapter analysis across TK–12, higher education, and career pathways.
+          </p>
+        </div>
+        <a href="our-work.html#research" class="btn btn-primary">Learn More</a>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         COALITION LOGOS
+    ══════════════════════════════════════════════════════ -->
+    <section id="coalition">
+      <div class="section-inner">
+        <p class="coalition-label reveal">Coalition Partners</p>
+        <div class="logo-row reveal">
+          <img src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/cf985d08-d94e-4c1e-89f3-76148241f0be/Taulama+logo+-+Luci+Latu.png" alt="Taulama" />
+          <img src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/e0e5bda5-e21f-49d4-8878-30ce9198aafb/EPIC-2021-LOGO-BLACK-HOUSE-LOCK-UP-VERSION+%281%29+-+Jimina+Afuola.png" alt="EPIC" />
+          <img src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/55730a7c-7386-4d40-9585-2700e81ceac5/SoCal+PICRT+new+logo+2022+%281%29+-+%27Alisi+Tulua.png" alt="SoCal PICRT" />
+          <img src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/820c58db-94a0-442d-ac09-4bcc5add1e70/1+-+Epi+Aumavae.png" alt="Coalition Partner" />
+          <img src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/b974c68b-b7d3-4a05-a78a-008700534749/NHPI+logo+-+Kare%27l.png" alt="NHPI" />
+          <img src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/f3337b8e-c73f-4525-8367-725eac913346/Island+Grad+LOGO_BLK+-+Francine+Blacksher+%28ETSA%29.png" alt="Island Grad" />
+          <img src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/5f1bcf4e-bd75-4a01-8b3e-bf45fdca507d/API+Advocates+Logo+-+Isa+Whalen.png" alt="API Advocates" />
+          <img src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/c8d96f23-b068-4f43-bf11-ae483818dad3/YAYAlogo-colortrancrop+-+Vaiola+Orellana.png" alt="YAYA" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         GET INVOLVED
+    ══════════════════════════════════════════════════════ */
+    <section id="get-involved">
+      <div class="section-inner">
+        <div class="reveal">
+          <span class="section-eyebrow">Partner With Us</span>
+          <h2 class="section-title">Three ways to <em>join the work.</em></h2>
+          <p class="section-lead">
+            Whether you organize, research, or fund — there's a place for you in this coalition.
+          </p>
+        </div>
+
+        <div class="involve-cards">
+          <div class="involve-card reveal">
+            <span class="involve-icon">🤝</span>
+            <h3 class="involve-title">Join the Coalition</h3>
+            <p class="involve-text">
+              Become part of a statewide network of advocates and organizations working
+              together to advance Pacific Islander communities in California.
+            </p>
+            <a href="https://groups.google.com/u/1/g/pacific-islanders-for-progress" target="_blank" rel="noopener" class="btn btn-forest">Join the Coalition</a>
+          </div>
+
+          <div class="involve-card reveal">
+            <span class="involve-icon">💬</span>
+            <h3 class="involve-title">Partner & Connect</h3>
+            <p class="involve-text">
+              Explore collaboration opportunities or reach out with a question.
+              A team member will respond to discuss how we can work together.
+            </p>
+            <a href="get-involved.html#partner" class="btn btn-ocean">Get in Touch</a>
+          </div>
+
+          <div class="involve-card reveal">
+            <span class="involve-icon">❤</span>
+            <h3 class="involve-title">Donate</h3>
+            <p class="involve-text">
+              Fuel the research, advocacy, and organizing that makes Pacific Islander
+              communities visible in the decisions that shape opportunity.
+            </p>
+            <a href="get-involved.html#donate" class="btn btn-bark">Give Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Pacific Islanders for Progress</span>
+        <p class="footer-tagline">
+          Advancing evidence-based advocacy for Pacific Islander communities in California.<br>
+          California Nonprofit Corporation
+        </p>
+        <div class="footer-socials">
+          <a href="http://instagram.com/pacificislandersforprogress" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a href="https://www.linkedin.com/company/pacific-islanders-for-progress/" target="_blank" rel="noopener" aria-label="LinkedIn">💼</a>
+          <a href="https://www.facebook.com/profile.php?id=61590081346803" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="our-work.html">Our Work</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Work</h4>
+        <ul>
+          <li><a href="our-work.html#research">Research</a></li>
+          <li><a href="our-work.html#coalition">Coalition</a></li>
+          <li><a href="our-work.html#advocacy">Advocacy</a></li>
+          <li><a href="our-work.html#research">Flagship Report</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>
+          <a href="mailto:info@pacificislandersforprogress.org">info@pacificislandersforprogress.org</a>
+        </p>
+        <p style="margin-top:.75rem;">California</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Pacific Islanders for Progress. All rights reserved.</span>
+      <span>pacificislandersforprogress.org</span>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Sticky nav shadow ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    /* ── Dropdown toggle ── */
+    function toggleDropdown(id) {
+      const li = document.getElementById(id);
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.nav-links > li').forEach(l => l.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+      const btn = li.querySelector('button');
+      if (btn) btn.setAttribute('aria-expanded', String(!isOpen));
+    }
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.nav-links > li')) {
+        document.querySelectorAll('.nav-links > li').forEach(l => l.classList.remove('open'));
+      }
+    });
+
+    /* ── Scroll reveal ── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
