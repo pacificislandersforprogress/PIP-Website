@@ -172,21 +172,13 @@
     #hero {
       min-height: 100vh;
       padding-top: var(--nav-h);
-      background: linear-gradient(135deg, #29543a 0%, #3d4830 40%, #4b3a32 100%);
+      background: #29543a;
       display: flex; align-items: center;
       position: relative;
       overflow: hidden;
     }
 
-    /* Subtle wave texture */
-    #hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,169,107,.08) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(47,93,115,.3) 0%, transparent 60%);
-      pointer-events: none;
-    }
+    #hero::before { display: none; }
 
     .hero-inner {
       max-width: 1200px; margin: 0 auto;
@@ -238,15 +230,16 @@
 
     .btn {
       display: inline-flex; align-items: center;
-      padding: .75rem 1.6rem;
-      border-radius: 6px;
+      padding: .45rem 1.25rem;
+      border-radius: 4px;
       font-family: 'Inter', sans-serif;
-      font-size: .88rem;
-      font-weight: 600;
+      font-size: .8rem;
+      font-weight: 500;
       text-decoration: none;
       transition: all .2s;
       cursor: pointer;
-      border: 2px solid transparent;
+      border: 1.5px solid transparent;
+      letter-spacing: .03em;
     }
     .btn-primary {
       background: var(--gold);
