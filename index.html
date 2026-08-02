@@ -161,14 +161,21 @@ li.open .drop{opacity:1;visibility:visible;transform:none}
 }
 .hero-eyebrow{color:var(--gold);margin-bottom:1.6rem}
 .hero-eyebrow::before{background:var(--gold)}
-.hero-h1{color:#fff;margin-bottom:1.7rem;max-width:13ch}
+.hero-h1{color:#fff;margin-bottom:2.6rem;max-width:22ch;font-size:clamp(1.85rem,3.6vw,3.05rem);line-height:1.16;letter-spacing:-.02em}
 .hero-lead{color:rgba(246,234,232,.72);font-size:1.05rem;line-height:1.8;font-weight:300;max-width:46ch;margin-bottom:2.4rem}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:3.4rem}
 
 /* stat rail */
-.rail{display:flex;gap:clamp(1.5rem,4vw,3.2rem);flex-wrap:wrap;padding-top:1.8rem;border-top:1px solid rgba(246,234,232,.15)}
-.stat-n{font-family:'Fraunces',serif;font-weight:200;font-size:2rem;color:var(--gold);line-height:1;letter-spacing:-.02em}
-.stat-l{font-size:.7rem;color:rgba(246,234,232,.55);margin-top:.4rem;letter-spacing:.06em;text-transform:uppercase;font-weight:400}
+.rail{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:rgba(246,234,232,.15);
+  border-top:1px solid rgba(246,234,232,.15);
+  border-bottom:1px solid rgba(246,234,232,.15);
+}
+.rail>div{background:var(--forest);padding:1.5rem 1.15rem 1.6rem}
+.stat-n{font-family:'Fraunces',serif;font-weight:200;font-size:clamp(1.8rem,2.6vw,2.3rem);color:var(--gold);line-height:1;letter-spacing:-.025em}
+.stat-l{font-size:.74rem;color:rgba(246,234,232,.6);margin-top:.6rem;line-height:1.5;font-weight:300;letter-spacing:.005em}
+.stat-l b{font-weight:500;color:rgba(246,234,232,.82)}
 
 /* hero frame */
 .frame{position:relative}
@@ -346,6 +353,7 @@ footer{background:var(--forest-deep);color:rgba(246,234,232,.62);padding:clamp(3
   .f-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:880px){
+  .rail{grid-template-columns:1fr 1fr}
   .links{display:none}
   .burger{display:flex}
   .hero-in,.about-grid,.report-grid{grid-template-columns:1fr}
@@ -361,7 +369,7 @@ footer{background:var(--forest-deep);color:rgba(246,234,232,.62);padding:clamp(3
   .logo-wall{grid-template-columns:repeat(2,1fr)}
   .f-grid{grid-template-columns:1fr}
   .report-meta{grid-template-columns:1fr 1fr}
-  .rail{gap:1.6rem}
+  .rail{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -437,17 +445,16 @@ footer{background:var(--forest-deep);color:rgba(246,234,232,.62);padding:clamp(3
   <div class="hero-in">
     <div>
       <p class="eyebrow hero-eyebrow rv">Statewide Advocacy Coalition · California</p>
-      <h1 class="display hero-h1 rv rv-d1">Advancing Education and Economic Outcomes for <em>Pacific Islanders</em></h1>
-      <p class="hero-lead rv rv-d2">Through evidence-based research, coalition-building, and policy advocacy, Pacific Islanders for Progress works to advance educational opportunity for Pacific Islanders across California's education systems.</p>
+      <h1 class="display hero-h1 rv rv-d1">Through evidence-based research, coalition-building, and policy advocacy, <em>Pacific Islanders for Progress</em> works to advance educational opportunity for Pacific Islanders across California's education systems.</h1>
       <div class="hero-actions rv rv-d2">
         <a href="our-work.html" class="btn btn-gold">Explore Our Work <span class="arw">→</span></a>
         <a href="get-involved.html#join" class="btn btn-ghost">Join the Coalition</a>
       </div>
       <div class="rail rv rv-d3">
-        <div><div class="stat-n">11+</div><div class="stat-l">Coalition Partners</div></div>
-        <div><div class="stat-n">8+</div><div class="stat-l">Oceanian Communities</div></div>
-        <div><div class="stat-n">14</div><div class="stat-l">Report Chapters</div></div>
-        <div><div class="stat-n">Sept</div><div class="stat-l">Report Release</div></div>
+        <div><div class="stat-n">30+</div><div class="stat-l"><b>Coalition partners</b> across California</div></div>
+        <div><div class="stat-n">330k+</div><div class="stat-l"><b>Pacific Islanders</b> living in California</div></div>
+        <div><div class="stat-n">22%</div><div class="stat-l">of Pacific Islanders were supported to earn a <b>bachelor's degree</b></div></div>
+        <div><div class="stat-n">44%</div><div class="stat-l">of NHPI high school graduates completed <b>A&ndash;G requirements</b> in 2025 &mdash; flat since 2021</div></div>
       </div>
     </div>
 
