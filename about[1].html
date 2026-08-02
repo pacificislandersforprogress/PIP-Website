@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Pacific Islanders for Progress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blush:#f6eae8; --forest:#29543a; --bark:#4b3a32;
+      --gold:#c8a96b; --ocean:#2f5d73; --white:#ffffff;
+      --text:#1c1c1c; --muted:#5a5a5a; --nav-h:68px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); line-height: 1.65; }
+
+    .skip-link { position:absolute;top:-40px;left:0;background:var(--forest);color:var(--white);padding:8px 16px;z-index:9999;transition:top .2s; }
+    .skip-link:focus { top:0; }
+
+    /* NAV */
+    nav { position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:var(--white);border-bottom:1px solid rgba(41,84,58,.12);display:flex;align-items:center;padding:0 2rem;z-index:1000;transition:box-shadow .3s; }
+    nav.scrolled { box-shadow:0 2px 20px rgba(0,0,0,.08); }
+    .nav-inner { width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between; }
+    .nav-logo { font-family:'Fraunces',serif;font-size:1.05rem;font-weight:300;color:var(--forest);text-decoration:none;letter-spacing:-.01em;flex-shrink:0; }
+    .nav-links { display:flex;align-items:center;gap:.25rem;list-style:none; }
+    .nav-links > li { position:relative; }
+    .nav-links > li > a, .nav-links > li > button { font-family:'Inter',sans-serif;font-size:.85rem;font-weight:500;color:var(--bark);text-decoration:none;padding:.5rem .85rem;border-radius:6px;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:.3rem;transition:color .2s,background .2s;white-space:nowrap; }
+    .nav-links > li > a:hover, .nav-links > li > button:hover { color:var(--forest);background:rgba(41,84,58,.06); }
+    .dropdown-arrow { font-size:.65rem;transition:transform .2s;display:inline-block; }
+    li.open .dropdown-arrow { transform:rotate(180deg); }
+    .dropdown { display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--white);border:1px solid rgba(41,84,58,.12);border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.1);min-width:220px;padding:.5rem 0;z-index:200; }
+    li.open .dropdown { display:block; }
+    .dropdown a { display:block;padding:.6rem 1.2rem;font-size:.83rem;color:var(--bark);text-decoration:none;transition:background .15s,color .15s; }
+    .dropdown a:hover { background:var(--blush);color:var(--forest); }
+    .dropdown-overview { font-weight:600;border-bottom:1px solid rgba(41,84,58,.1);margin-bottom:.3rem;color:var(--forest) !important; }
+    .nav-cta { background:var(--forest) !important;color:var(--white) !important;border-radius:6px !important;padding:.5rem 1.1rem !important;font-weight:600 !important;margin-left:.5rem;transition:background .2s !important; }
+    .nav-cta:hover { background:var(--bark) !important; }
+    .hamburger { display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px; }
+    .hamburger span { display:block;width:24px;height:2px;background:var(--bark);border-radius:2px; }
+
+    /* PAGE HERO */
+    .page-hero { padding: calc(var(--nav-h) + 4rem) 2rem 4rem; background: linear-gradient(135deg, #29543a 0%, #3d4830 40%, #4b3a32 100%); }
+    .page-hero-inner { max-width: 800px; margin: 0 auto; }
+    .page-eyebrow { display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem; }
+    .page-title { font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--white);
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);line-height:1.15;margin-bottom:1.25rem; }
+    .page-title em { font-style:italic;color:var(--gold);font-weight:300; }
+    .page-lead { font-size:1.05rem;color:rgba(246,234,232,.8);line-height:1.8;max-width:640px; }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow { display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem; }
+    .section-title { font-family:'Fraunces',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:300;color:var(--bark);line-height:1.2;margin-bottom:1rem; 
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+    }
+    .section-title em { font-style:italic;color:var(--forest);font-weight:300; }
+    .section-text { font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:1.25rem;max-width:720px; }
+
+    /* MISSION */
+    #mission { background: var(--blush); }
+    .mission-grid { display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center; }
+    .mission-img { width:100%;height:420px;object-fit:cover;border-radius:12px;display:block; }
+    blockquote { font-family:'Fraunces',serif;font-size:1.3rem;font-weight:400;font-style:italic;color:var(--bark);border-left:4px solid var(--gold);padding-left:1.25rem;line-height:1.6;margin:1.5rem 0; }
+
+    /* STORY */
+    #story { background: var(--white); }
+    .story-text { max-width: 760px; }
+
+    /* VALUES */
+    #values { background: var(--forest); }
+    .values-title { font-family:'Fraunces',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:300;color:var(--white);
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);margin-bottom:.75rem; }
+    .values-title em { font-style:italic;color:var(--gold);font-weight:300; }
+    .values-lead { font-size:1rem;color:rgba(246,234,232,.75);margin-bottom:3rem;max-width:600px; }
+    .values-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem; }
+    .value-card { background:rgba(246,234,232,.07);border:1px solid rgba(246,234,232,.12);border-radius:12px;padding:2rem; }
+    .value-num { font-family:'Fraunces',serif;font-size:2rem;font-weight:300;color:var(--gold);margin-bottom:.5rem;line-height:1; }
+    .value-name { font-family:'Fraunces',serif;font-size:1.1rem;font-weight:300;color:var(--white);margin-bottom:.5rem; }
+    .value-desc { font-size:.85rem;color:rgba(246,234,232,.7);line-height:1.7; }
+
+    /* COMMUNITIES */
+    #communities { background: var(--blush); }
+    .community-tags { display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.5rem; }
+    .tag { background:var(--white);border:1px solid rgba(41,84,58,.15);border-radius:50px;padding:.45rem 1.1rem;font-size:.83rem;font-weight:500;color:var(--bark); }
+
+    /* CONTACT STRIP */
+    #contact-strip { background: var(--ocean); padding: 4rem 2rem; }
+    .contact-inner { max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap; }
+    .contact-text h2 { font-family:'Fraunces',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;color:var(--white);margin-bottom:.5rem; 
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+    }
+    .contact-text h2 em { font-style:italic;color:var(--gold);font-weight:300; }
+    .contact-text p { font-size:.9rem;color:rgba(246,234,232,.8); }
+    .btn { display:inline-flex;align-items:center;padding:.75rem 1.6rem;border-radius:6px;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .2s;border:2px solid transparent; }
+    .btn-primary { background:var(--gold);color:var(--bark); }
+    .btn-primary:hover { background:#d4b87a; }
+    .btn-outline-white { background:transparent;border-color:rgba(246,234,232,.5);color:var(--white); }
+    .btn-outline-white:hover { background:rgba(246,234,232,.1); }
+
+    /* FOOTER */
+    footer { background:var(--bark);color:rgba(246,234,232,.75);padding:4rem 2rem 2rem; }
+    .footer-inner { max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem; }
+    .footer-brand .footer-logo { font-family:'Fraunces',serif;font-size:1.15rem;font-weight:300;color:var(--white);display:block;margin-bottom:.75rem; 
+      text-shadow: 0 3px 12px rgba(20, 12, 6, 0.32), 0 1px 3px rgba(20, 12, 6, 0.18);
+    }
+    .footer-tagline { font-size:.83rem;line-height:1.7;margin-bottom:1.25rem; }
+    .footer-socials { display:flex;gap:.65rem; }
+    .footer-socials a { display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:rgba(246,234,232,.1);border-radius:6px;text-decoration:none;font-size:.85rem;transition:background .2s; }
+    .footer-socials a:hover { background:rgba(246,234,232,.2); }
+    .footer-col h4 { font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem; }
+    .footer-col ul { list-style:none; }
+    .footer-col ul li { margin-bottom:.55rem; }
+    .footer-col ul li a, .footer-col a { font-size:.84rem;color:rgba(246,234,232,.7);text-decoration:none;transition:color .2s; }
+    .footer-col ul li a:hover, .footer-col a:hover { color:var(--white); }
+    .footer-col p { font-size:.84rem;line-height:1.7; }
+    .footer-bottom { max-width:1200px;margin:3rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(246,234,232,.1);display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(246,234,232,.45);flex-wrap:wrap;gap:.5rem; }
+
+    /* REVEAL */
+    .reveal { opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease; }
+    .reveal.visible { opacity:1;transform:none; }
+    @media (prefers-reduced-motion:reduce) { .reveal { opacity:1;transform:none; } }
+
+    @media (max-width:900px) {
+      .mission-grid { grid-template-columns:1fr; }
+      .mission-img { height:260px; }
+      .values-grid { grid-template-columns:1fr 1fr; }
+      .footer-inner { grid-template-columns:1fr 1fr; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+    }
+    @media (max-width:600px) {
+      .values-grid { grid-template-columns:1fr; }
+      .footer-inner { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Pacific Islanders for Progress</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li id="about-menu">
+          <button onclick="toggleDropdown('about-menu')" aria-expanded="false">About <span class="dropdown-arrow">▾</span></button>
+          <div class="dropdown">
+            <a href="about.html" class="dropdown-overview">About — Overview</a>
+            <a href="about.html#mission">Our Mission</a>
+            <a href="about.html#story">Our Story</a>
+          </div>
+        </li>
+        <li id="work-menu">
+          <button onclick="toggleDropdown('work-menu')" aria-expanded="false">Our Work <span class="dropdown-arrow">▾</span></button>
+          <div class="dropdown">
+            <a href="our-work.html" class="dropdown-overview">Our Work — Overview</a>
+            <a href="our-work.html#research">Evidence-Based Research</a>
+            <a href="our-work.html#coalition">Coalition-Building</a>
+            <a href="our-work.html#advocacy">Policy Advocacy</a>
+          </div>
+        </li>
+        <li><a href="blog.html">Blog</a></li>
+        <li id="involve-menu">
+          <button onclick="toggleDropdown('involve-menu')" aria-expanded="false">Get Involved <span class="dropdown-arrow">▾</span></button>
+          <div class="dropdown">
+            <a href="get-involved.html" class="dropdown-overview">Get Involved — Overview</a>
+            <a href="get-involved.html#join">Join the Coalition</a>
+            <a href="get-involved.html#partner">Partner & Connect</a>
+            <a href="get-involved.html#donate">Donate</a>
+          </div>
+        </li>
+        <li><a href="get-involved.html#donate" class="nav-cta">Donate</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="page-hero">
+      <div class="page-hero-inner reveal">
+        <span class="page-eyebrow">About PIP</span>
+        <h1 class="page-title">Advancing Community Development through <em>Strategic Collaboration</em></h1>
+        <p class="page-lead">Established to address systemic inequities, PIP designs and implements evidence-based programs that empower underserved communities and facilitate measurable, sustainable development.</p>
+      </div>
+    </div>
+
+    <section id="mission">
+      <div class="section-inner">
+        <div class="mission-grid">
+          <div class="reveal">
+            <img class="mission-img" src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/1740593301.257073-BIQRZREBAQMYRPOUDXIU/imgg-gi3-b65jg9lc.png" alt="PIP community" />
+          </div>
+          <div class="reveal">
+            <span class="section-eyebrow">Our Mission</span>
+            <h2 class="section-title">Making Pacific Islanders <em>visible</em> in the data.</h2>
+            <blockquote>"Pacific Islanders remain among the most underserved and underrepresented communities in California's education, workforce, and civic systems — yet are too often rendered invisible in the data and policies that shape opportunity."</blockquote>
+            <p class="section-text">Pacific Islanders for Progress (PIP) is a statewide grassroots advocacy coalition working to change that. We bring together community leaders, educators, researchers, and advocates to advance accountability, strengthen public education systems, and ensure Pacific Islander communities are fully supported to pursue postsecondary education and pathways that lead to their flourishing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="section-inner">
+        <div class="story-text reveal">
+          <span class="section-eyebrow">Our Story</span>
+          <h2 class="section-title">Built by community, <em>for community.</em></h2>
+          <p class="section-text">PIP was founded to address a gap that advocates, educators, and researchers kept running into: Pacific Islander communities in California were being folded into broad racial categories that erased the distinct realities of our communities. The data didn't exist — and where it did, decision-makers weren't acting on it.</p>
+          <p class="section-text">Through strategic collaboration with community leaders, universities, and private partners, PIP leverages comprehensive research to optimize resources and maximize collective impact. We work across Samoan, Tongan, Fijian, Chamorro, Marshallese, Chuukese, Hawaiian, and other Oceanian communities throughout California.</p>
+          <p class="section-text">Our coalition model is grounded in <em>talanoa</em> — a Pacific tradition of open, inclusive dialogue — and accountable to the communities we serve. We organize not just to produce reports, but to build lasting relationships that translate into real power at the tables where decisions are made.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="values">
+      <div class="section-inner">
+        <div class="reveal">
+          <span class="section-eyebrow" style="color:var(--gold);">What We Stand For</span>
+          <h2 class="values-title">Guided by <em>community values.</em></h2>
+          <p class="values-lead">Every part of our work — from research to coalition-building to advocacy — is grounded in these commitments.</p>
+        </div>
+        <div class="values-grid">
+          <div class="value-card reveal">
+            <div class="value-num">01</div>
+            <div class="value-name">Disaggregation</div>
+            <p class="value-desc">Pacific Islander communities are not a monolith. We insist on data that names each community by name.</p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-num">02</div>
+            <div class="value-name">Accountability</div>
+            <p class="value-desc">Institutions must be held responsible for the outcomes they produce for Pacific Islander students and families.</p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-num">03</div>
+            <div class="value-name">Community Voice</div>
+            <p class="value-desc">The people most affected by inequity must be at the center of the solutions — not just the subject of reports.</p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-num">04</div>
+            <div class="value-name">Talanoa</div>
+            <p class="value-desc">Relationship-building grounded in Pacific tradition: open, inclusive dialogue that builds trust before strategy.</p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-num">05</div>
+            <div class="value-name">Evidence-Based Action</div>
+            <p class="value-desc">Advocacy without research is advocacy without power. We bring both to every table we sit at.</p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-num">06</div>
+            <div class="value-name">Collective Power</div>
+            <p class="value-desc">No single organization shifts systems alone. Coalition multiplies voice and accelerates change.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="communities">
+      <div class="section-inner">
+        <div class="reveal">
+          <span class="section-eyebrow">Communities We Serve</span>
+          <h2 class="section-title">Oceanian communities <em>across California.</em></h2>
+          <p class="section-text">PIP's work centers the full diversity of Pacific Islander communities — each with distinct languages, cultures, histories, and needs that aggregate data erases.</p>
+          <div class="community-tags">
+            <span class="tag">Samoan</span>
+            <span class="tag">Tongan</span>
+            <span class="tag">Fijian</span>
+            <span class="tag">Chamorro</span>
+            <span class="tag">Marshallese</span>
+            <span class="tag">Chuukese</span>
+            <span class="tag">Hawaiian</span>
+            <span class="tag">Palauan</span>
+            <span class="tag">Kosraean</span>
+            <span class="tag">Pohnpeian</span>
+            <span class="tag">Other Oceanian communities</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-strip">
+      <div class="contact-inner reveal">
+        <div class="contact-text">
+          <h2>Ready to <em>partner with us?</em></h2>
+          <p>Complete the form to initiate a dialogue about collaborative opportunities or inquiries.</p>
+        </div>
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+          <a href="get-involved.html#partner" class="btn btn-primary">Get in Touch</a>
+          <a href="get-involved.html#join" class="btn btn-outline-white">Join the Coalition</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Pacific Islanders for Progress</span>
+        <p class="footer-tagline">Advancing evidence-based advocacy for Pacific Islander communities in California.<br>California Nonprofit Corporation</p>
+        <div class="footer-socials">
+          <a href="http://instagram.com/pacificislandersforprogress" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a href="https://www.linkedin.com/company/pacific-islanders-for-progress/" target="_blank" rel="noopener" aria-label="LinkedIn">💼</a>
+          <a href="https://www.facebook.com/profile.php?id=61590081346803" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="our-work.html">Our Work</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Work</h4>
+        <ul>
+          <li><a href="our-work.html#research">Research</a></li>
+          <li><a href="our-work.html#coalition">Coalition</a></li>
+          <li><a href="our-work.html#advocacy">Advocacy</a></li>
+          <li><a href="our-work.html#research">Flagship Report</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><a href="mailto:info@pacificislandersforprogress.org">info@pacificislandersforprogress.org</a></p>
+        <p style="margin-top:.75rem;">California</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Pacific Islanders for Progress. All rights reserved.</span>
+      <span>pacificislandersforprogress.org</span>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 10); });
+    function toggleDropdown(id) {
+      const li = document.getElementById(id); const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.nav-links > li').forEach(l => l.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+      const btn = li.querySelector('button'); if (btn) btn.setAttribute('aria-expanded', String(!isOpen));
+    }
+    document.addEventListener('click', e => { if (!e.target.closest('.nav-links > li')) document.querySelectorAll('.nav-links > li').forEach(l => l.classList.remove('open')); });
+    const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
