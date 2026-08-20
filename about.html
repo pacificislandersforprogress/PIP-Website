@@ -405,6 +405,32 @@ footer::after{
 .crumb a{transition:color .25s}
 .crumb a:hover{color:var(--ocean)}
 
+#mission{background:var(--forest);position:relative;overflow:hidden;padding-top:clamp(2.2rem,4vw,3.4rem);padding-bottom:clamp(2.2rem,4vw,3.4rem)}
+#mission::after{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size:58px 58px;
+  -webkit-mask-image:radial-gradient(ellipse 82% 74% at 50% 45%, #000 22%, transparent 80%);
+  mask-image:radial-gradient(ellipse 82% 74% at 50% 45%, #000 22%, transparent 80%);
+}
+.m-arcs{position:absolute;left:0;right:0;bottom:0;height:120px;pointer-events:none;opacity:.16;z-index:1}
+.m-arcs svg{width:100%;height:100%}
+#mission .wrap{position:relative;z-index:2}
+#mission .split{grid-template-columns:.52fr 1.48fr;gap:clamp(1.8rem,4vw,3.2rem);align-items:center}
+#mission .framed img{aspect-ratio:1/1;max-width:300px}
+#mission .framed::before{inset:-9px -9px 9px 9px}
+@media(max-width:880px){
+  #mission .split{grid-template-columns:1fr}
+  #mission .framed{max-width:260px}
+  #mission .framed img{aspect-ratio:4/3;max-width:none}
+}
+#mission .eyebrow{color:var(--gold)}
+#mission .eyebrow::before{background:var(--gold);opacity:.6}
+#mission .prose p{color:rgba(246,234,232,.82);font-size:1.02rem;line-height:1.75;margin-bottom:.9rem;max-width:74ch}
+#mission .framed::before{border-color:rgba(255,255,255,.32)}
+
 /* ─── Prose ────────────────────────────────────── */
 .prose p{font-size:.98rem;line-height:1.9;color:var(--muted);font-weight:300;margin-bottom:1.2rem;max-width:62ch}
 .prose p:last-child{margin-bottom:0}
@@ -432,9 +458,16 @@ footer::after{
 .w-arcs{position:absolute;left:0;right:0;bottom:0;height:150px;pointer-events:none;opacity:.16;z-index:1}
 .w-arcs svg{width:100%;height:100%}
 #work .wrap{position:relative;z-index:2}
+#work .wrow{padding:clamp(1.6rem,3vw,2.6rem) 0}
+#work .wrow-idx{font-size:clamp(2.2rem,4.5vw,3.2rem);margin-bottom:.5rem}
+#work .mini-label{margin-top:.9rem}
+#work .tick{margin:.9rem 0 1.3rem}
+#work .split{align-items:center;gap:clamp(1.8rem,4vw,3.4rem)}
+#work .framed img{aspect-ratio:16/10}
 #work .sec-head h2{color:#fff}
 #work .sec-head h2 em{color:var(--gold)}
 #work .sec-head .lead{color:rgba(246,234,232,.72)}
+@media(max-width:900px){#work .sec-head .lead{white-space:normal !important;font-size:.95rem}}
 #work .eyebrow{color:var(--gold)}
 #work .eyebrow::before{background:var(--gold);opacity:.6}
 #work .wrow{border-top-color:rgba(255,255,255,.18)}
@@ -475,16 +508,19 @@ footer::after{
 }
 
 /* ─── Value grid ───────────────────────────────── */
-.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-blue);border:1px solid var(--rule-blue)}
-.vcell{background:var(--white);padding:2rem 1.7rem;transition:background .4s var(--ease);position:relative}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-blue);border:1px solid var(--rule-blue)}
+.vcell{background:var(--white);padding:2rem 1.9rem 2.1rem;transition:background .4s var(--ease);position:relative}
 .vcell::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:var(--ocean);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
 .vcell:hover::before{transform:scaleX(1)}
 .vcell:nth-child(2n)::before{background:var(--forest)}
-.vcell:nth-child(2n) .n{color:var(--forest)}
+.vcell:nth-child(2n) .v-term{color:var(--ocean)}
+.vcell:nth-child(2n) .v-gloss{color:var(--forest)}
 .vcell:hover{background:var(--mist)}
-.vcell .n{font-family:'Fraunces',serif;font-weight:200;font-size:1.7rem;color:var(--ocean);line-height:1;letter-spacing:-.02em;margin-bottom:.85rem}
-.vcell h3{font-family:'Fraunces',serif;font-weight:300;font-size:1.05rem;color:var(--bark);margin-bottom:.55rem;letter-spacing:-.01em}
-.vcell p{font-size:.83rem;color:var(--muted);line-height:1.7;font-weight:300}
+.v-term{font-family:'Fraunces',serif;font-weight:300;font-size:1.5rem;color:var(--forest);letter-spacing:-.015em;line-height:1.15}
+.v-gloss{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ocean);margin:.5rem 0 .9rem}
+.vcell p em{font-style:italic;color:var(--forest);font-weight:400}
+
+.vcell p{font-size:.87rem;color:var(--muted);line-height:1.75;font-weight:300}
 
 /* ─── Tags ─────────────────────────────────────── */
 .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}
@@ -598,7 +634,7 @@ footer::after{
 .empty p{font-size:.95rem;color:var(--muted);line-height:1.8;font-weight:300;max-width:46ch;margin:0 auto 2rem}
 
 @media(max-width:1024px){
-  .vgrid{grid-template-columns:1fr 1fr}
+  .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-blue);border:1px solid var(--rule-blue)}
   .cards{grid-template-columns:1fr 1fr}
 }
 @media(max-width:880px){
@@ -609,7 +645,7 @@ footer::after{
   .frow{grid-template-columns:1fr}
 }
 @media(max-width:620px){
-  .vgrid{grid-template-columns:1fr}
+  .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule-blue);border:1px solid var(--rule-blue)}
   .cards{grid-template-columns:1fr}
   }
 </style>
@@ -687,6 +723,13 @@ footer::after{
 </section>
 
 <section class="sec" id="mission">
+  <div class="m-arcs" aria-hidden="true">
+    <svg viewBox="0 0 1200 160" preserveAspectRatio="none" fill="none">
+      <path d="M-50 140 Q 300 46 650 126 T 1300 98" stroke="#fff" stroke-width="1.4"/>
+      <path d="M-50 162 Q 300 68 650 148 T 1300 120" stroke="#fff" stroke-width="1.4"/>
+      <path d="M-50 184 Q 300 90 650 170 T 1300 142" stroke="#fff" stroke-width="1.4"/>
+    </svg>
+  </div>
   <div class="wrap">
     <div class="split narrow-l">
       <div class="framed rv">
@@ -694,11 +737,6 @@ footer::after{
       </div>
       <div class="rv rv-d1">
         <p class="eyebrow" style="margin-bottom:1.1rem">Our Mission</p>
-        <h2 class="head" style="color:var(--bark);margin-bottom:1.6rem">Seen, supported, <em style="color:var(--forest)">and represented.</em></h2>
-        <div class="prose">
-          <p>Our mission is to advance educational opportunity for Pacific Islanders in California through research, coalition-building, and advocacy.</p>
-          <p>We work to ensure that the experiences and priorities of Pacific Islander students and families are visible in the data, heard in policy conversations, and reflected in the decisions and investments made across California's education systems.</p>
-        </div>
       </div>
     </div>
   </div>
@@ -732,7 +770,7 @@ footer::after{
   </div>
 </section>
 
-<section class="sec" id="work" style="background:var(--forest);position:relative;overflow:hidden">
+<section class="sec" id="work" style="background:var(--forest);position:relative;overflow:hidden;padding-top:clamp(2.2rem,4vw,3.4rem);padding-bottom:clamp(2.2rem,4vw,3.4rem)">
   <div class="w-arcs" aria-hidden="true">
     <svg viewBox="0 0 1200 150" preserveAspectRatio="none" fill="none">
       <path d="M-50 130 Q 300 40 650 118 T 1300 92" stroke="#fff" stroke-width="1.4"/>
@@ -744,17 +782,14 @@ footer::after{
     <div class="sec-head rv">
       <p class="eyebrow">What We Do</p>
       <h2 class="head">Three fronts. <em>One mission.</em></h2>
-      <p class="lead">Research makes the case. The coalition builds the priorities. Advocacy carries it forward.</p>
+      <p class="lead" style="max-width:none;white-space:nowrap">Research makes the case. The coalition builds the priorities. Advocacy carries it forward.</p>
     </div>
 <div class="wrow" id="research">
       <div class="split narrow-r">
         <div class="rv">
           <div class="wrow-idx">01</div>
           <p class="eyebrow" style="margin-bottom:1.1rem">Evidence-Based Research</p>
-          <h2 class="head">What isn't counted <em>doesn't get changed.</em></h2>
-          <div class="prose">
-            <p>Pacific Islanders are routinely folded into broad racial categories, erasing the distinct realities of our communities. We produce disaggregated, community-grounded research that separates the data, names the disparities, and gives advocates, educators, and policymakers the evidence they need to act.</p>
-          </div>
+          <h2 class="head">What isn't measured <em>isn't visible.</em></h2>
           <p class="mini-label" style="margin-top:1.8rem">What we focus on</p>
           <ul class="tick">
             <li>Disaggregated education and economic data for Pacific Islander communities in California</li>
@@ -776,10 +811,7 @@ footer::after{
         <div class="rv rv-d1">
           <div class="wrow-idx">02</div>
           <p class="eyebrow" style="margin-bottom:1.1rem">Coalition-Building</p>
-          <h2 class="head">Turning shared values into <em>collective power.</em></h2>
-          <div class="prose">
-            <p>No single organization can shift systems alone. PIP organizes across schools, universities, service providers, cultural organizations, and community leaders &mdash; building lasting relationships through <em>talanoa</em> and turning shared values into collective power. Our coalition multiplies our voice: when partners speak as one, decision-makers listen.</p>
-          </div>
+          <h2 class="head">Turning shared values into <em>shared priorities.</em></h2>
           <p class="mini-label" style="margin-top:1.8rem">Building a coalition that</p>
           <ul class="tick">
             <li>Connects organizations and individuals across California into a shared agenda</li>
@@ -797,9 +829,6 @@ footer::after{
           <div class="wrow-idx">03</div>
           <p class="eyebrow" style="margin-bottom:1.1rem">Advocacy</p>
           <h2 class="head">Bringing Pacific Islander voices <em>to the table.</em></h2>
-          <div class="prose">
-            <p>Good evidence only matters if it reaches the people who set budgets and write policy. PIP advocates for accountable systems and stronger public education, ensuring Pacific Islander communities are represented in the decisions that shape their opportunity. We translate research into policy recommendations, mobilize community voice, and hold institutions accountable for the outcomes they produce.</p>
-          </div>
           <p class="mini-label" style="margin-top:1.8rem">How we advocate</p>
           <ul class="tick">
             <li>Equipping community members to speak directly to decision-makers</li>
@@ -823,15 +852,29 @@ footer::after{
     <div class="sec-head rv">
       <p class="eyebrow">What We Stand For</p>
       <h2 class="head" style="color:var(--bark)">Guided by <em style="color:var(--forest)">community values.</em></h2>
-      <p class="lead">Every part of our work &mdash; from research to coalition-building to advocacy &mdash; is grounded in these commitments.</p>
+      <p class="lead">Our work is grounded in values carried across Pasifika cultures.</p>
     </div>
     <div class="vgrid rv">
-      <div class="vcell"><div class="n">01</div><h3>Disaggregation</h3><p>Pacific Islander communities are not a monolith. We insist on data that names each community by name.</p></div>
-      <div class="vcell"><div class="n">02</div><h3>Accountability</h3><p>Institutions must be held responsible for the outcomes they produce for Pacific Islander students and families.</p></div>
-      <div class="vcell"><div class="n">03</div><h3>Community Voice</h3><p>The people most affected by inequity must be at the center of the solutions &mdash; not just the subject of reports.</p></div>
-      <div class="vcell"><div class="n">04</div><h3>Talanoa</h3><p>Relationship-building grounded in Pacific tradition: open, inclusive dialogue that builds trust before strategy.</p></div>
-      <div class="vcell"><div class="n">05</div><h3>Evidence-Based Action</h3><p>Advocacy without research is advocacy without power. We bring both to every table we sit at.</p></div>
-      <div class="vcell"><div class="n">06</div><h3>Collective Power</h3><p>No single organization shifts systems alone. Coalition multiplies voice and accelerates change.</p></div>
+      <div class="vcell">
+        <div class="v-term">Tauhi V&#257;</div>
+        <div class="v-gloss">Nurture Relationships</div>
+        <p>Rooted in Tongan culture, <em>tauhi v&#257;</em> calls us to care for the relational space that connects us. We build our work through trust, reciprocity, and meaningful relationships across communities. We believe lasting progress is not achieved alone, but through the relationships we nurture along the way.</p>
+      </div>
+      <div class="vcell">
+        <div class="v-term">Tautua</div>
+        <div class="v-gloss">Serve Our Communities</div>
+        <p>In Samoan culture, <em>tautua</em> speaks to service and the understanding that leadership is earned through serving others. We center the needs and aspirations of Pacific Islander students, families, and communities. Our work is not about speaking for our communities, but working alongside them and using our collective strengths in service of their futures.</p>
+      </div>
+      <div class="vcell">
+        <div class="v-term">Kuleana</div>
+        <div class="v-gloss">Carry Responsibility</div>
+        <p><em>Kuleana</em> reflects the Native Hawaiian understanding of responsibility and our obligations to one another, our communities, and future generations. We take seriously our responsibility to advocate for educational opportunity and to hold ourselves and decision-makers accountable for creating the conditions in which Pacific Islander students can thrive.</p>
+      </div>
+      <div class="vcell">
+        <div class="v-term">Mana</div>
+        <div class="v-gloss">Build Collective Power</div>
+        <p>Across Pasifika cultures, <em>mana</em> speaks to spiritual power, authority, and strength. We recognize the mana that already exists within Pacific Islander communities. Our role is not to give communities a voice, but to create opportunities for that voice, leadership, knowledge, and collective power to shape the policies and systems that affect our students.</p>
+      </div>
     </div>
   </div>
 </section>
