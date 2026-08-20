@@ -263,7 +263,7 @@ li.open .drop{opacity:1;visibility:visible;transform:none}
 #report{background:var(--bark);color:#fff;position:relative;overflow:hidden}
 #report::before{
   content:'';position:absolute;inset:0;opacity:.05;pointer-events:none;
-  background:radial-gradient(ellipse 72% 64% at 50% 30%, rgba(255,255,255,.05) 0%, transparent 66%);
+  background:none;
 }
 .report-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2.5rem,6vw,5.5rem);align-items:center;position:relative;z-index:2}
 .report-tag{
@@ -310,7 +310,7 @@ footer{background:var(--forest);position:relative;overflow:hidden;color:rgba(246
 /* modern footer texture: soft mesh glow + fine grid + wave arcs */
 footer::before{
   content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 72% 64% at 50% 30%, rgba(255,255,255,.05) 0%, transparent 66%);
+  background:none;
 }
 footer::after{
   content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
@@ -492,7 +492,7 @@ footer::after{
 }
 .band::before{
   content:'';position:absolute;inset:0;opacity:.05;pointer-events:none;
-  background:radial-gradient(ellipse 72% 64% at 50% 30%, rgba(255,255,255,.05) 0%, transparent 66%);
+  background:none;
 }
 .band-in{
   max-width:1280px;margin:0 auto;position:relative;z-index:2;
