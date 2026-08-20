@@ -171,7 +171,7 @@ li.open .drop{opacity:1;visibility:visible;transform:none}
 .hero-eyebrow{color:var(--ocean);margin-bottom:1.6rem}
 .hero-eyebrow::before{background:var(--forest);opacity:.4}
 .hero-eyebrow::before{background:var(--gold)}
-.hero-h1{color:var(--forest);text-shadow:0 1px 0 rgba(255,255,255,.6),0 2px 14px rgba(47,93,115,.16),0 6px 34px rgba(41,84,58,.14);margin-bottom:2.6rem;max-width:22ch;font-size:clamp(1.85rem,3.6vw,3.05rem);line-height:1.16;letter-spacing:-.02em}
+.hero-h1{color:var(--forest);text-shadow:0 1px 0 rgba(255,255,255,.7),0 0 26px rgba(41,84,58,.30),0 4px 18px rgba(47,93,115,.26),0 10px 44px rgba(41,84,58,.20);margin-bottom:2.6rem;max-width:22ch;font-size:clamp(1.85rem,3.6vw,3.05rem);line-height:1.16;letter-spacing:-.02em}
 .hero-lead{color:var(--muted);font-size:1.05rem;line-height:1.8;font-weight:300;max-width:46ch;margin-bottom:2.4rem}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:3.4rem}
 
@@ -200,11 +200,25 @@ li.open .drop{opacity:1;visibility:visible;transform:none}
 
 /* ─── Marquee statement ────────────────────────── */
 #statement{background:var(--forest);padding:clamp(4rem,9vw,7.5rem) clamp(1.2rem,4vw,3rem);overflow:hidden;position:relative}
-#statement::before{content:'';position:absolute;width:70vw;height:70vw;max-width:820px;max-height:820px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(47,93,115,.28) 0%,transparent 66%);pointer-events:none}
+#statement::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 70% 66% at 50% 42%, rgba(255,255,255,.05) 0%, transparent 66%);
+}
+#statement::after{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:58px 58px;
+  -webkit-mask-image:radial-gradient(ellipse 82% 74% at 50% 45%, #000 22%, transparent 80%);
+  mask-image:radial-gradient(ellipse 82% 74% at 50% 45%, #000 22%, transparent 80%);
+}
+.s-arcs{position:absolute;left:0;right:0;bottom:-1px;height:150px;pointer-events:none;opacity:.14;z-index:1}
+.s-arcs svg{width:100%;height:100%}
 .stmt{max-width:1000px;margin:0 auto;border-left:3px solid var(--ocean);padding-left:clamp(1.4rem,3vw,2.6rem);position:relative;z-index:2}
 .stmt-q{
   font-family:'Fraunces',serif;font-weight:200;font-style:italic;
-  font-size:clamp(1.4rem,3.4vw,2.5rem);line-height:1.34;color:#fff;text-shadow:0 0 30px rgba(47,93,115,.45),0 2px 16px rgba(0,0,0,.18);
+  font-size:clamp(1.4rem,3.4vw,2.5rem);line-height:1.34;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.20);
   letter-spacing:-.018em;
 }
 .stmt-q b{font-weight:400;font-style:normal;color:#fff}
@@ -264,27 +278,6 @@ li.open .drop{opacity:1;visibility:visible;transform:none}
 #about p{color:var(--muted);font-size:.98rem;line-height:1.85;font-weight:300;margin-bottom:1.15rem;max-width:52ch}
 .about-actions{margin-top:2rem}
 
-/* ─── Communities ticker ───────────────────────── */
-#peoples{
-  background:var(--ocean);padding:clamp(3rem,6vw,4.5rem) 0;
-  position:relative;overflow:hidden;
-}
-#peoples::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background-image:repeating-linear-gradient(115deg,transparent 0 24px,rgba(255,255,255,.16) 24px 25px);
-}
-#peoples>*{position:relative;z-index:2}
-.ticker-label{text-align:center;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:2rem;font-weight:500}
-.ticker{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-.ticker-track{display:flex;gap:3.2rem;width:max-content;animation:slide 42s linear infinite}
-.ticker:hover .ticker-track{animation-play-state:paused}
-.ticker-track span{
-  font-family:'Fraunces',serif;font-weight:200;font-size:clamp(1.4rem,3vw,2.1rem);
-  color:#fff;opacity:.72;white-space:nowrap;letter-spacing:-.02em;
-  transition:opacity .3s,color .3s;
-}
-.ticker-track span:hover{opacity:1}
-@keyframes slide{to{transform:translateX(-50%)}}
 
 /* ─── Report feature ───────────────────────────── */
 #report{background:var(--ocean-deep);color:#fff;position:relative;overflow:hidden}
@@ -310,12 +303,30 @@ li.open .drop{opacity:1;visibility:visible;transform:none}
 .rm-l{font-size:.68rem;color:rgba(246,234,232,.55);margin-top:.5rem;letter-spacing:.07em;text-transform:uppercase}
 
 /* ─── Partners ─────────────────────────────────── */
-#partners{background:var(--ocean-deep);position:relative;overflow:hidden}
-.logo-wall{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16)}
-.logo-cell{background:#fff;display:flex;align-items:center;justify-content:center;padding:2.2rem 1.5rem;min-height:150px;transition:background .35s}
+#partners{background:var(--white);position:relative;overflow:hidden}
+#partners::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 58% 60% at 10% 6%, rgba(47,93,115,.09) 0%, transparent 62%),
+    radial-gradient(ellipse 52% 56% at 92% 94%, rgba(47,93,115,.07) 0%, transparent 60%);
+}
+#partners::after{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.8;
+  background-image:
+    linear-gradient(rgba(47,93,115,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47,93,115,.06) 1px, transparent 1px);
+  background-size:62px 62px;
+  -webkit-mask-image:radial-gradient(ellipse 84% 76% at 50% 45%, #000 20%, transparent 80%);
+  mask-image:radial-gradient(ellipse 84% 76% at 50% 45%, #000 20%, transparent 80%);
+}
+.p-arcs{position:absolute;left:0;right:0;bottom:0;height:170px;pointer-events:none;opacity:.14;z-index:1}
+.p-arcs svg{width:100%;height:100%}
+#partners .wrap{position:relative;z-index:2}
+.logo-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule-blue);border:1px solid var(--rule-blue);position:relative;z-index:2}
+.logo-cell{background:#fff;display:flex;align-items:center;justify-content:center;padding:2.6rem 1.8rem;min-height:190px;transition:background .35s}
 .logo-cell:hover{background:var(--mist)}
 .logo-cell:hover img{filter:none;opacity:1}
-.logo-cell img{max-height:78px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.55;transition:filter .4s,opacity .4s}
+.logo-cell img{max-height:110px;max-width:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.62;transition:filter .4s,opacity .4s}
 .logo-cell:hover img{filter:none;opacity:1}
 
 /* ─── Involve ──────────────────────────────────── */
@@ -342,10 +353,7 @@ footer{background:var(--forest);position:relative;overflow:hidden;color:rgba(246
 /* modern footer texture: soft mesh glow + fine grid + wave arcs */
 footer::before{
   content:'';position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 60% 55% at 12% 8%, rgba(47,93,115,.55) 0%, transparent 62%),
-    radial-gradient(ellipse 55% 60% at 88% 92%, rgba(47,93,115,.42) 0%, transparent 60%),
-    radial-gradient(circle at 70% 18%, rgba(255,255,255,.055) 0%, transparent 45%);
+  background:radial-gradient(ellipse 72% 64% at 50% 30%, rgba(255,255,255,.05) 0%, transparent 66%);
 }
 footer::after{
   content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
@@ -391,8 +399,7 @@ footer::after{
 .rv-d1{transition-delay:.09s}.rv-d2{transition-delay:.18s}.rv-d3{transition-delay:.27s}
 @media (prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none;transition:none}
-  .ticker-track{animation:none}
-  *{scroll-behavior:auto !important}
+    *{scroll-behavior:auto !important}
 }
 
 /* ─── Responsive ───────────────────────────────── */
@@ -417,6 +424,8 @@ footer::after{
   .pillars{grid-template-columns:1fr}
   .pillar:last-child{grid-column:auto}
   .logo-wall{grid-template-columns:repeat(2,1fr)}
+  .logo-cell{min-height:150px;padding:2rem 1.3rem}
+  .logo-cell img{max-height:84px}
   .f-grid{grid-template-columns:1fr}
   .report-meta{grid-template-columns:1fr 1fr}
   .rail{grid-template-columns:1fr 1fr}
@@ -515,6 +524,13 @@ footer::after{
 
 <!-- ══ STATEMENT ══ -->
 <section id="statement">
+  <div class="s-arcs" aria-hidden="true">
+    <svg viewBox="0 0 1200 150" preserveAspectRatio="none" fill="none">
+      <path d="M-50 130 Q 300 40 650 118 T 1300 92" stroke="#fff" stroke-width="1.3"/>
+      <path d="M-50 152 Q 300 62 650 140 T 1300 114" stroke="#fff" stroke-width="1.3"/>
+      <path d="M-50 174 Q 300 84 650 162 T 1300 136" stroke="#fff" stroke-width="1.3"/>
+    </svg>
+  </div>
   <div class="stmt rv">
     <span class="stmt-mark" aria-hidden="true">"</span>
     <p class="stmt-q">Pacific Islanders remain among the most underserved and underrepresented communities in California's education, workforce, and civic systems — yet are too often <b>rendered invisible</b> in the data and policies that shape opportunity.</p>
@@ -547,7 +563,7 @@ footer::after{
         </div>
         <div class="pillar-body">
           <h3 class="sub">Evidence-Based Research</h3>
-          <p>What isn't counted doesn't get changed. We produce disaggregated, community-grounded research that separates the data, names the disparities, and gives advocates the evidence they need to act.</p>
+          <p>What isn't measured doesn't get changed. We produce disaggregated, community-grounded research that separates the data, names the disparities, and gives advocates the evidence they need to act.</p>
           <ul class="pillar-list">
             <li>Disaggregated education and economic data</li>
             <li>Outcomes across TK–12 and postsecondary</li>
@@ -564,7 +580,7 @@ footer::after{
         </div>
         <div class="pillar-body">
           <h3 class="sub">Coalition-Building</h3>
-          <p>No single organization can shift systems alone. PIP organizes across schools, universities, service providers, and community leaders — turning shared values into collective power through <em>talanoa</em>.</p>
+          <p>No single organization can shift systems alone. PIP organizes across schools, universities, service providers, and community leaders — turning values into shared priorities and collective power while honoring our ancestral homelands.</p>
           <ul class="pillar-list">
             <li>Statewide network with a shared agenda</li>
             <li>Amplifying campaigns together</li>
@@ -580,7 +596,7 @@ footer::after{
           <span class="pillar-idx">03</span>
         </div>
         <div class="pillar-body">
-          <h3 class="sub">Policy Advocacy</h3>
+          <h3 class="sub">Advocacy</h3>
           <p>Good evidence only matters if it reaches the people who set budgets and write policy. PIP brings Pacific Islander voices to the tables where decisions are made.</p>
           <ul class="pillar-list">
             <li>Equipping community members to speak up</li>
@@ -590,17 +606,6 @@ footer::after{
           <a href="our-work.html#advocacy" class="pillar-link">Policy priorities coming soon <span>→</span></a>
         </div>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- ══ COMMUNITIES TICKER ══ -->
-<section id="peoples">
-  <p class="ticker-label rv">Communities We Serve</p>
-  <div class="ticker">
-    <div class="ticker-track">
-      <span>Sāmoan</span><span>Tongan</span><span>Fijian</span><span>Chamorro</span><span>Marshallese</span><span>Chuukese</span><span>Native Hawaiian</span><span>Māori</span><span>Mixed Pacific Islander</span>
-      <span>Sāmoan</span><span>Tongan</span><span>Fijian</span><span>Chamorro</span><span>Marshallese</span><span>Chuukese</span><span>Native Hawaiian</span><span>Māori</span><span>Mixed Pacific Islander</span>
     </div>
   </div>
 </section>
@@ -628,10 +633,17 @@ footer::after{
 
 <!-- ══ PARTNERS ══ -->
 <section class="sec" id="partners">
+  <div class="p-arcs" aria-hidden="true">
+    <svg viewBox="0 0 1200 170" preserveAspectRatio="none" fill="none">
+      <path d="M-50 150 Q 300 56 650 136 T 1300 108" stroke="#2f5d73" stroke-width="1.3"/>
+      <path d="M-50 172 Q 300 78 650 158 T 1300 130" stroke="#2f5d73" stroke-width="1.3"/>
+      <path d="M-50 194 Q 300 100 650 180 T 1300 152" stroke="#2f5d73" stroke-width="1.3"/>
+    </svg>
+  </div>
   <div class="wrap">
     <div class="sec-head rv" style="margin-bottom:2.8rem">
-      <p class="eyebrow" style="color:var(--ocean)">Coalition Partners</p>
-      <h2 class="head" style="color:#fff">Stronger <em style="color:var(--ocean)">together.</em></h2>
+      <p class="eyebrow">Coalition Partners</p>
+      <h2 class="head">Stronger <em>together.</em></h2>
     </div>
     <div class="logo-wall rv">
       <div class="logo-cell"><img src="https://images.squarespace-cdn.com/content/v1/69f7bd47b295b31664f47be3/cf985d08-d94e-4c1e-89f3-76148241f0be/Taulama+logo+-+Luci+Latu.png" alt="Taulama"></div>
