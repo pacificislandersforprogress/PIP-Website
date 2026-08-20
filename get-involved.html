@@ -196,9 +196,9 @@ li.open .drop{opacity:1;visibility:visible;transform:none}
 .stmt-mark{font-family:'Fraunces',serif;font-size:4rem;color:var(--ocean);line-height:.6;opacity:.4;display:block;margin-bottom:.5rem}
 
 /* ─── Section shell ────────────────────────────── */
-.sec{padding:clamp(3rem,6vw,5.5rem) clamp(1.2rem,4vw,3rem)}
+.sec{padding:clamp(2.2rem,4vw,3.6rem) clamp(1.2rem,4vw,3rem)}
 .wrap{max-width:1280px;margin:0 auto}
-.sec-head{max-width:660px;margin-bottom:clamp(1.8rem,3.4vw,2.6rem)}
+.sec-head{max-width:660px;margin-bottom:clamp(1.2rem,2.2vw,1.8rem)}
 .sec-head .eyebrow{margin-bottom:1.1rem}
 .sec-head h2{color:var(--bark);margin-bottom:1.1rem;text-shadow:0 0 22px rgba(41,84,58,.32),0 0 48px rgba(41,84,58,.18)}
 .sec-head h2 em{color:var(--forest)}
@@ -389,7 +389,7 @@ footer::after{
 
 /* ─── Interior page hero ───────────────────────── */
 .phero{
-  padding:calc(var(--nav-h) + clamp(2.6rem,5vw,4.2rem)) clamp(1.2rem,4vw,3rem) clamp(2.6rem,5vw,4rem);
+  padding:calc(var(--nav-h) + clamp(2rem,3.6vw,3.2rem)) clamp(1.2rem,4vw,3rem) clamp(2rem,3.6vw,3rem);
   background:var(--white);color:var(--ink);position:relative;overflow:hidden;
 }
 .phero .waves{position:absolute;inset:0;opacity:.22;pointer-events:none;z-index:1}
@@ -547,6 +547,38 @@ footer::after{
   transform:rotate(-45deg);
 }
 
+#join{background:var(--ocean);position:relative;overflow:hidden}
+#join::after{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background-image:
+    linear-gradient(rgba(255,255,255,.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px);
+  background-size:58px 58px;
+  -webkit-mask-image:radial-gradient(ellipse 84% 76% at 50% 45%, #000 20%, transparent 80%);
+  mask-image:radial-gradient(ellipse 84% 76% at 50% 45%, #000 20%, transparent 80%);
+}
+.j-arcs{position:absolute;left:0;right:0;bottom:0;height:110px;pointer-events:none;opacity:.28;z-index:1}
+.j-arcs svg{width:100%;height:100%}
+#join .wrap{position:relative;z-index:2}
+#join .benefits li{padding:.6rem 0 .6rem 1.7rem}
+#join .benefits li::before{top:1.15em}
+#join .panel{padding:clamp(1.5rem,3vw,2rem)}
+#join .panel p{margin-bottom:1.3rem}
+#join .split{gap:clamp(1.6rem,3.5vw,3rem);align-items:start}
+#join .eyebrow{color:var(--gold)}
+#join .eyebrow::before{background:var(--gold);opacity:.7}
+#join .sec-head h2{color:#fff;text-shadow:0 0 24px rgba(255,255,255,.34),0 0 52px rgba(255,255,255,.16)}
+#join .sec-head h2 em{color:var(--gold)}
+#join .sec-head .lead{color:rgba(246,234,232,.8)}
+#join .benefits li{color:rgba(246,234,232,.85);border-bottom-color:rgba(255,255,255,.18)}
+#join .benefits li::before{border-color:var(--gold)}
+#join .panel{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22)}
+#join .panel::before{background:var(--gold)}
+#join .panel h3{color:#fff}
+#join .panel p{color:rgba(246,234,232,.8)}
+#join .panel .btn-forest{background:var(--gold);color:var(--bark)}
+#join .panel .btn-forest:hover{background:var(--gold);filter:brightness(1.08);transform:translateY(-2px)}
+
 /* ─── Panel ────────────────────────────────────── */
 .panel{
   background:#fff;border:1px solid var(--rule);border-radius:3px;
@@ -555,6 +587,29 @@ footer::after{
 .panel::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--ocean)}
 .panel h3{color:var(--bark);margin-bottom:.75rem}
 .panel p{font-size:.87rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:1.7rem}
+
+#partner{background:var(--white);position:relative;overflow:hidden}
+#partner::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 52% 58% at 6% 8%, rgba(47,93,115,.13) 0%, transparent 62%),
+    radial-gradient(ellipse 48% 54% at 94% 92%, rgba(47,93,115,.10) 0%, transparent 60%);
+}
+#partner::after{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.8;
+  background-image:
+    linear-gradient(rgba(47,93,115,.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47,93,115,.15) 1px, transparent 1px);
+  background-size:62px 62px;
+  -webkit-mask-image:radial-gradient(ellipse 84% 76% at 50% 45%, #000 20%, transparent 80%);
+  mask-image:radial-gradient(ellipse 84% 76% at 50% 45%, #000 20%, transparent 80%);
+}
+.pt-arcs{position:absolute;left:0;right:0;bottom:0;height:120px;pointer-events:none;opacity:.45;z-index:1}
+.pt-arcs svg{width:100%;height:100%}
+#partner .wrap{position:relative;z-index:2}
+#partner .fg{margin-bottom:.85rem}
+#partner .fg textarea{min-height:96px}
+#partner .fnote{margin-bottom:1.1rem}
 
 /* ─── Form ─────────────────────────────────────── */
 .form{max-width:620px}
@@ -571,6 +626,36 @@ footer::after{
 }
 .fg textarea{resize:vertical;min-height:120px;line-height:1.65}
 .fnote{font-size:.76rem;color:var(--muted);font-weight:300;margin-bottom:1.4rem}
+
+#donate{background:var(--gold);position:relative;overflow:hidden}
+#donate::after{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:
+    linear-gradient(rgba(41,84,58,.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41,84,58,.16) 1px, transparent 1px);
+  background-size:60px 60px;
+  -webkit-mask-image:radial-gradient(ellipse 84% 76% at 50% 45%, #000 20%, transparent 80%);
+  mask-image:radial-gradient(ellipse 84% 76% at 50% 45%, #000 20%, transparent 80%);
+}
+.d-arcs{position:absolute;left:0;right:0;bottom:0;height:120px;pointer-events:none;opacity:.3;z-index:1}
+.d-arcs svg{width:100%;height:100%}
+#donate .wrap{position:relative;z-index:2}
+#donate .way{padding:1.5rem 1.4rem}
+#donate .way svg{margin-bottom:.8rem}
+#donate .ways{margin-bottom:1.6rem}
+#donate .eyebrow{color:var(--forest)}
+#donate .eyebrow::before{background:var(--forest);opacity:.7}
+#donate .sec-head h2{color:var(--forest);text-shadow:0 0 22px rgba(41,84,58,.26),0 0 48px rgba(41,84,58,.14)}
+#donate .sec-head h2 em{color:var(--bark)}
+#donate .sec-head .lead{color:var(--bark);opacity:.9}
+#donate .ways{background:rgba(41,84,58,.28);border:1px solid rgba(41,84,58,.28)}
+#donate .way{background:rgba(255,255,255,.42)}
+#donate .way:hover{background:rgba(255,255,255,.68)}
+#donate .way svg{color:var(--forest)}
+#donate .way h3{color:var(--forest)}
+#donate .way p{color:var(--bark);opacity:.92}
+#donate .btn-forest{background:var(--forest);color:#fff}
+#donate .btn-forest:hover{background:var(--forest);filter:brightness(.88);transform:translateY(-2px)}
 
 /* ─── Donate ways ──────────────────────────────── */
 .ways{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-blue);border:1px solid var(--rule-blue);margin-bottom:2.5rem}
@@ -694,12 +779,19 @@ footer::after{
   </div>
 </section>
 
-<section class="sec" id="join" style="background:var(--mist)">
+<section class="sec" id="join">
+  <div class="j-arcs" aria-hidden="true">
+    <svg viewBox="0 0 1200 160" preserveAspectRatio="none" fill="none">
+      <path d="M-50 140 Q 300 46 650 126 T 1300 98" stroke="#fff" stroke-width="1.5"/>
+      <path d="M-50 162 Q 300 68 650 148 T 1300 120" stroke="#fff" stroke-width="1.5"/>
+      <path d="M-50 184 Q 300 90 650 170 T 1300 142" stroke="#fff" stroke-width="1.5"/>
+    </svg>
+  </div>
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">01 &mdash; Join the Coalition</p>
       <h2 class="head">Become part of a statewide <em>network.</em></h2>
-      <p class="lead">PIP's coalition connects organizations and advocates across California into a shared agenda for Pacific Islander communities. When we move together, decision-makers take notice.</p>
+      <p class="lead">The Pacific Islanders for Progress Coalition connects organizations and advocates across California into a shared agenda for Pacific Islander communities. When we move together, decision-makers take notice.</p>
     </div>
     <div class="split">
       <ul class="benefits rv">
@@ -720,6 +812,13 @@ footer::after{
 </section>
 
 <section class="sec" id="partner">
+  <div class="pt-arcs" aria-hidden="true">
+    <svg viewBox="0 0 1200 170" preserveAspectRatio="none" fill="none">
+      <path d="M-50 150 Q 300 56 650 136 T 1300 108" stroke="#2f5d73" stroke-width="1.8"/>
+      <path d="M-50 172 Q 300 78 650 158 T 1300 130" stroke="#2f5d73" stroke-width="1.8"/>
+      <path d="M-50 194 Q 300 100 650 180 T 1300 152" stroke="#2f5d73" stroke-width="1.8"/>
+    </svg>
+  </div>
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">02 &mdash; Partner &amp; Connect</p>
@@ -751,12 +850,19 @@ footer::after{
   </div>
 </section>
 
-<section class="sec" id="donate" style="background:var(--mist);position:relative;overflow:hidden;border-top:1px solid var(--rule-blue)">
-  <div class="glow" style="position:absolute;right:-18vw;top:-18vw;width:56vw;height:56vw;max-width:700px;max-height:700px;border-radius:50%;background:radial-gradient(circle,rgba(47,93,115,.08) 0%,transparent 65%);pointer-events:none" aria-hidden="true"></div>
+<section class="sec" id="donate">
+  <div class="d-arcs" aria-hidden="true">
+    <svg viewBox="0 0 1200 170" preserveAspectRatio="none" fill="none">
+      <path d="M-50 150 Q 300 56 650 136 T 1300 108" stroke="#29543a" stroke-width="2"/>
+      <path d="M-50 172 Q 300 78 650 158 T 1300 130" stroke="#29543a" stroke-width="2"/>
+      <path d="M-50 194 Q 300 100 650 180 T 1300 152" stroke="#29543a" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="d-old-glow" style="display:none" style="position:absolute;right:-18vw;top:-18vw;width:56vw;height:56vw;max-width:700px;max-height:700px;border-radius:50%;background:radial-gradient(circle,rgba(47,93,115,.08) 0%,transparent 65%);pointer-events:none" aria-hidden="true"></div>
   <div class="wrap" style="position:relative;z-index:2">
     <div class="sec-head rv">
       <p class="eyebrow">03 &mdash; Donate</p>
-      <h2 class="head" style="color:var(--bark)">Fuel the research, advocacy, <em style="color:var(--forest)">and organizing.</em></h2>
+      <h2 class="head">Fuel the research, advocacy, <em>and organizing.</em></h2>
       <p class="lead">Pacific Islanders for Progress is a California nonprofit. Your support funds the disaggregated research, coalition infrastructure, and policy advocacy that makes Pacific Islander communities visible in the decisions that shape opportunity.</p>
     </div>
     <div class="ways rv">
@@ -778,7 +884,7 @@ footer::after{
     </div>
     <div class="rv rv-d1">
       <a href="mailto:info@pacificislandersforprogress.org?subject=Donation%20Inquiry" class="btn btn-forest">Give now <span class="arw">&rarr;</span></a>
-      <p style="color:var(--muted);font-size:.78rem;margin-top:1.1rem;font-weight:300">PIP is a California Nonprofit Corporation. Please contact us for donation details.</p>
+      <p style="color:var(--bark);opacity:.8;font-size:.78rem;margin-top:1.1rem;font-weight:300">PIP is a California Nonprofit Corporation. Please contact us for donation details.</p>
     </div>
   </div>
 </section>
