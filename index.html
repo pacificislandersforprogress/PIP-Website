@@ -19,7 +19,7 @@
   --mist:#f4f7f8;          /* palest ocean tint */
   --sage:#f2f6f2;          /* palest forest tint */
   --ocean-deep:#24485a;
-  --nav-h:104px;
+  --nav-h:72px;
   --ease:cubic-bezier(.22,1,.36,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -58,18 +58,16 @@ nav{
   position:fixed;inset:0 0 auto;height:var(--nav-h);z-index:1000;
   display:flex;align-items:center;padding:0 clamp(1.2rem,4vw,3rem);
   background:var(--forest);
-  backdrop-filter:saturate(180%) blur(18px);
-  -webkit-backdrop-filter:saturate(180%) blur(18px);
   border-bottom:1px solid transparent;
   transition:box-shadow .35s;
 }
 nav.scrolled{box-shadow:0 2px 22px rgba(29,61,41,.22)}
 .nav-in{width:100%;max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem}
 .brand{display:flex;align-items:center;gap:.55rem;flex-shrink:0;overflow:visible}
-.brand-img{height:96px;width:auto;display:block;transform:scale(1.28);transform-origin:left center}
-.brand-img-f{height:104px;transform:scale(1.24)}
-@media(max-width:880px){.brand-img{height:74px}}
-@media(max-width:520px){.brand-img{height:60px;transform:scale(1.2)}}
+.brand-img{height:66px;width:auto;display:block;transform:scale(1.26);transform-origin:left center}
+.brand-img-f{height:96px;transform:scale(1.24);transform-origin:left center}
+@media(max-width:880px){.brand-img{height:54px}}
+@media(max-width:520px){.brand-img{height:44px;transform:scale(1.2)}}
 .brand-name{font-family:'Fraunces',serif;font-weight:400;font-size:.9rem;letter-spacing:-.015em;color:#fff;white-space:nowrap}
 .links{display:flex;align-items:center;gap:.1rem;list-style:none}
 .links>li{position:relative}
@@ -102,9 +100,9 @@ li.open .drop{opacity:1;visibility:visible;transform:none}
 .drop .top{font-weight:500;color:var(--forest);border-bottom:1px solid var(--rule);border-radius:7px 7px 0 0;margin-bottom:.25rem;padding-bottom:.65rem}
 .nav-cta{
   background:transparent;border:1.5px solid #fff;color:#fff !important;
-  padding:.45rem 1.05rem !important;border-radius:100px !important;
+  padding:.42rem 1.05rem !important;border-radius:100px !important;
   font-weight:500 !important;margin-left:.6rem;font-size:.78rem !important;
-  transition:background .25s,transform .25s var(--ease) !important;
+  transition:background .25s,color .25s,transform .25s var(--ease) !important;
 }
 .nav-cta::after{display:none}
 .nav-cta:hover{background:#fff;color:var(--forest) !important;transform:translateY(-1px)}
