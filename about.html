@@ -245,20 +245,6 @@ li.open .drop{opacity:1;visibility:visible;transform:none}
 #about p{color:var(--muted);font-size:.98rem;line-height:1.85;font-weight:300;margin-bottom:1.15rem;max-width:52ch}
 .about-actions{margin-top:2rem}
 
-/* ─── Communities ticker ───────────────────────── */
-#peoples{background:var(--white);padding:clamp(3rem,6vw,4.5rem) 0;border-bottom:1px solid var(--rule-blue)}
-.ticker-label{text-align:center;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;font-weight:500}
-.ticker{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-.ticker-track{display:flex;gap:3.2rem;width:max-content;animation:slide 42s linear infinite}
-.ticker:hover .ticker-track{animation-play-state:paused}
-.ticker-track span{
-  font-family:'Fraunces',serif;font-weight:200;font-size:clamp(1.4rem,3vw,2.1rem);
-  color:var(--forest);opacity:.4;white-space:nowrap;letter-spacing:-.02em;
-  transition:opacity .3s,color .3s;
-}
-.ticker-track span:nth-child(2n){color:var(--ocean)}
-.ticker-track span:hover{opacity:1}
-@keyframes slide{to{transform:translateX(-50%)}}
 
 /* ─── Report feature ───────────────────────────── */
 #report{background:var(--bark);color:#fff;position:relative;overflow:hidden}
@@ -357,8 +343,7 @@ footer::after{
 .rv-d1{transition-delay:.09s}.rv-d2{transition-delay:.18s}.rv-d3{transition-delay:.27s}
 @media (prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none;transition:none}
-  .ticker-track{animation:none}
-  *{scroll-behavior:auto !important}
+    *{scroll-behavior:auto !important}
 }
 
 /* ─── Responsive ───────────────────────────────── */
@@ -848,19 +833,6 @@ footer::after{
       <div class="vcell"><div class="n">05</div><h3>Evidence-Based Action</h3><p>Advocacy without research is advocacy without power. We bring both to every table we sit at.</p></div>
       <div class="vcell"><div class="n">06</div><h3>Collective Power</h3><p>No single organization shifts systems alone. Coalition multiplies voice and accelerates change.</p></div>
     </div>
-  </div>
-</section>
-
-<section id="peoples" style="padding:clamp(3.5rem,7vw,5rem) 0">
-  <p class="ticker-label rv">Communities We Serve</p>
-  <div class="ticker">
-    <div class="ticker-track">
-      <span>Samoan</span><span>Tongan</span><span>Fijian</span><span>Chamorro</span><span>Marshallese</span><span>Chuukese</span><span>Hawaiian</span><span>Palauan</span><span>Kosraean</span><span>Pohnpeian</span>
-      <span>Samoan</span><span>Tongan</span><span>Fijian</span><span>Chamorro</span><span>Marshallese</span><span>Chuukese</span><span>Hawaiian</span><span>Palauan</span><span>Kosraean</span><span>Pohnpeian</span>
-    </div>
-  </div>
-  <div class="wrap" style="padding:2.5rem clamp(1.2rem,4vw,3rem) 0">
-    <p class="lead rv" style="max-width:62ch;font-size:.95rem">PIP's work centers the full diversity of Pacific Islander communities &mdash; each with distinct languages, cultures, histories, and needs that aggregate data erases.</p>
   </div>
 </section>
 
