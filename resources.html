@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Get Involved &mdash; Pacific Islanders for Progress</title>
-<meta name="description" content="Join the coalition, partner with PIP, or donate to support Pacific Islander advocacy in California.">
+<title>Resources &mdash; Pacific Islanders for Progress</title>
+<meta name="description" content="Be The Wave podcast, blog posts, and research from Pacific Islanders for Progress.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="theme-color" content="#29543a">
@@ -593,6 +593,51 @@ footer::after{
 .nl-form input::placeholder{color:rgba(246,234,232,.4)}
 .nl-form input:focus{border-color:var(--gold)}
 
+/* ─── Podcast ──────────────────────────────────── */
+#podcast{background:var(--forest);position:relative;overflow:hidden}
+#podcast::after{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:58px 58px;
+  -webkit-mask-image:radial-gradient(ellipse 82% 74% at 50% 45%, #000 22%, transparent 80%);
+  mask-image:radial-gradient(ellipse 82% 74% at 50% 45%, #000 22%, transparent 80%);
+}
+.pod-arcs{position:absolute;left:0;right:0;bottom:0;height:160px;pointer-events:none;opacity:.16;z-index:1}
+.pod-arcs svg{width:100%;height:100%}
+#podcast .wrap{position:relative;z-index:2}
+#podcast .eyebrow{color:var(--gold)}
+#podcast .eyebrow::before{background:var(--gold);opacity:.6}
+#podcast h2{color:#fff}
+#podcast h2 em{color:var(--gold)}
+#podcast .lead{color:rgba(246,234,232,.72)}
+
+.pod-intro{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(2rem,5vw,4rem);align-items:start;margin-bottom:2.6rem}
+.pod-why{list-style:none;border-left:2px solid var(--gold);padding-left:1.2rem}
+.pod-why li{font-size:.86rem;color:rgba(246,234,232,.75);line-height:1.6;font-weight:300;padding:.45rem 0}
+.pod-host{font-size:.82rem;color:rgba(246,234,232,.6);font-weight:300;margin-top:1.1rem}
+
+.eps{display:grid;gap:1px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.18)}
+.ep{background:var(--forest);padding:1.5rem 1.6rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.3rem;align-items:center;transition:background .35s}
+.ep:hover{background:rgba(255,255,255,.06)}
+.ep-n{font-family:'Fraunces',serif;font-weight:200;font-size:1.9rem;color:var(--gold);line-height:1;letter-spacing:-.02em;min-width:2.6rem}
+.ep-t{font-family:'Fraunces',serif;font-weight:300;font-size:1.08rem;color:#fff;line-height:1.3;margin-bottom:.3rem}
+.ep-m{font-size:.76rem;color:rgba(246,234,232,.55);font-weight:300;letter-spacing:.03em}
+.ep-play{
+  width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.35);
+  display:grid;place-items:center;color:#fff;flex-shrink:0;transition:all .3s var(--ease);
+}
+.ep-play svg{width:13px;height:13px;margin-left:2px}
+.ep:hover .ep-play{background:var(--gold);border-color:var(--gold);color:var(--forest)}
+.pod-subs{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.8rem}
+
+@media(max-width:880px){
+  .pod-intro{grid-template-columns:1fr}
+  .ep{grid-template-columns:auto 1fr;gap:1rem}
+  .ep-play{grid-column:2;justify-self:start;margin-top:.5rem}
+}
+
 /* ─── Empty state ──────────────────────────────── */
 .empty{
   text-align:center;padding:clamp(2.4rem,5vw,4rem) 2rem;
@@ -686,98 +731,147 @@ footer::after{
   </div>
   <div class="glow" aria-hidden="true"></div>
   <div class="phero-in">
-    <p class="crumb rv"><a href="index.html">Home</a> &nbsp;/&nbsp; Get Involved</p>
-    <p class="eyebrow rv">Get Involved</p>
-    <h1 class="rv rv-d1">Three ways to <em>join the work.</em></h1>
-    <p class="rv rv-d2">Whether you organize, research, advocate, or fund &mdash; there's a place for you in this coalition. Pacific Islanders for Progress is stronger when our community moves together.</p>
+    <p class="crumb rv"><a href="index.html">Home</a> &nbsp;/&nbsp; Resources</p>
+    <p class="eyebrow rv">Resources</p>
+    <h1 class="rv rv-d1">Listen, read, and <em>dig into the data.</em></h1>
+    <p class="rv rv-d2">The Be The Wave podcast, writing from the coalition, and the research behind our advocacy &mdash; gathered in one place.</p>
   </div>
 </section>
 
-<section class="sec" id="join" style="background:var(--mist)">
+<!-- ══ PODCAST ══ -->
+<section class="sec" id="podcast">
+  <div class="pod-arcs" aria-hidden="true">
+    <svg viewBox="0 0 1200 160" preserveAspectRatio="none" fill="none">
+      <path d="M-50 140 Q 300 46 650 126 T 1300 98" stroke="#fff" stroke-width="1.4"/>
+      <path d="M-50 162 Q 300 68 650 148 T 1300 120" stroke="#fff" stroke-width="1.4"/>
+      <path d="M-50 184 Q 300 90 650 170 T 1300 142" stroke="#fff" stroke-width="1.4"/>
+    </svg>
+  </div>
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow">01 &mdash; Join the Coalition</p>
-      <h2 class="head">Become part of a statewide <em>network.</em></h2>
-      <p class="lead">PIP's coalition connects organizations and advocates across California into a shared agenda for Pacific Islander communities. When we move together, decision-makers take notice.</p>
+      <p class="eyebrow">Podcast</p>
+      <h2 class="head">Be The <em>Wave.</em></h2>
+      <p class="lead">Change doesn't simply happen to communities &mdash; people can be the wave that moves them forward.</p>
     </div>
-    <div class="split">
-      <ul class="benefits rv">
-        <li>Access to disaggregated data, research, and policy briefs</li>
-        <li>Coordinated advocacy campaigns and shared messaging</li>
-        <li>Invitations to coalition convenings and community events</li>
-        <li>Amplification of your organization's work through PIP's network</li>
-        <li>Connection to other Pacific Islander-serving organizations statewide</li>
-        <li>Talanoa-grounded relationship building across communities</li>
+
+    <div class="pod-intro rv">
+      <div>
+        <p style="color:rgba(246,234,232,.75);font-size:.98rem;line-height:1.85;font-weight:300;margin-bottom:1rem">
+          Be The Wave is a short-form podcast spotlighting Pacific Islander leaders, community partners, educators, advocates, and policymakers creating meaningful change. Each episode runs about ten minutes &mdash; one focused conversation, not a long technical interview.
+        </p>
+        <p class="pod-host">Hosted by Roy Tongilava</p>
+      </div>
+      <ul class="pod-why">
+        <li>Elevate Pacific Islander voices and leadership</li>
+        <li>Make policy and civic issues accessible</li>
+        <li>Connect listeners with people already doing the work</li>
       </ul>
-      <div class="panel rv rv-d1">
-        <h3 class="sub">Ready to join?</h3>
-        <p>Join our Google Group to connect with coalition members, receive updates, and participate in shared advocacy. Open to organizations and individuals committed to Pacific Islander communities in California.</p>
-        <a href="https://groups.google.com/u/1/g/pacific-islanders-for-progress" target="_blank" rel="noopener" class="btn btn-forest">Join the coalition <span class="arw">&rarr;</span></a>
+    </div>
+
+    <div class="eps rv rv-d1">
+      <div class="ep">
+        <div class="ep-n">01</div>
+        <div>
+          <div class="ep-t">Episode title coming soon</div>
+          <div class="ep-m">Guest name &middot; ~10 min</div>
+        </div>
+        <a href="#" class="ep-play" aria-label="Play episode 1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></a>
       </div>
+      <div class="ep">
+        <div class="ep-n">02</div>
+        <div>
+          <div class="ep-t">Episode title coming soon</div>
+          <div class="ep-m">Guest name &middot; ~10 min</div>
+        </div>
+        <a href="#" class="ep-play" aria-label="Play episode 2"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="pod-subs rv rv-d2">
+      <a href="#" class="btn btn-gold">Listen now <span class="arw">&rarr;</span></a>
+      <a href="#" class="btn btn-line-light">Subscribe</a>
     </div>
   </div>
 </section>
 
-<section class="sec" id="partner">
+<!-- ══ BLOG ══ -->
+<section class="sec" id="blog">
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow">02 &mdash; Partner &amp; Connect</p>
-      <h2 class="head">Explore <em>collaboration.</em></h2>
-      <p class="lead">Whether you're a researcher, funder, institution, or advocate &mdash; complete the form below to initiate a dialogue. A team member will respond to discuss how we can work together.</p>
+      <p class="eyebrow">Blog</p>
+      <h2 class="head">News, analysis, and <em>community voice.</em></h2>
+      <p class="lead">Research briefs, policy developments, coalition updates, and perspectives from Pacific Islander communities across California.</p>
     </div>
-    <div class="form rv">
-      <div class="frow">
-        <div class="fg"><label for="fname">First Name</label><input type="text" id="fname" placeholder="Your first name"></div>
-        <div class="fg"><label for="lname">Last Name</label><input type="text" id="lname" placeholder="Your last name"></div>
-      </div>
-      <div class="fg"><label for="email">Email Address</label><input type="email" id="email" placeholder="you@organization.org"></div>
-      <div class="fg"><label for="org">Organization <span style="text-transform:none;letter-spacing:0;font-weight:300;color:var(--muted)">(optional)</span></label><input type="text" id="org" placeholder="Your organization or affiliation"></div>
-      <div class="fg"><label for="interest">Area of Interest</label>
-        <select id="interest">
-          <option value="">Select one&hellip;</option>
-          <option>Research Collaboration</option>
-          <option>Coalition Membership</option>
-          <option>Policy Advocacy Partnership</option>
-          <option>Funding / Philanthropy</option>
-          <option>Media / Press Inquiry</option>
-          <option>General Inquiry</option>
-        </select>
-      </div>
-      <div class="fg"><label for="message">Message</label><textarea id="message" placeholder="Tell us a bit about yourself and how you'd like to connect&hellip;"></textarea></div>
-      <p class="fnote">We typically respond within 3&ndash;5 business days.</p>
-      <button class="btn btn-forest" onclick="alert('Form submission coming soon \u2014 please email info@pacificislandersforprogress.org directly.')">Send message <span class="arw">&rarr;</span></button>
+
+    <div class="empty rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+      <h2 class="head">Posts <em>coming soon.</em></h2>
+      <p>Sign up below and we'll let you know when the first pieces publish.</p>
+      <a href="#newsletter" class="btn btn-forest">Get notified <span class="arw">&rarr;</span></a>
+    </div>
+
+    <div class="sec-head rv" style="margin-bottom:1.8rem">
+      <p class="eyebrow">In the Pipeline</p>
+      <h2 class="head">Topics we'll <em>cover.</em></h2>
+    </div>
+
+    <div class="cards">
+      <article class="card rv">
+        <div class="card-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6"/><rect x="12.5" y="7" width="3" height="10"/><rect x="18" y="13" width="3" height="4"/></svg></div>
+        <div class="card-body">
+          <span class="chip">Research</span>
+          <h3 class="sub">Understanding NHPI disaggregation in California's K&ndash;12 data</h3>
+          <p>Why aggregate data erases Pacific Islander communities &mdash; and what disaggregated reporting reveals about outcomes across California's school systems.</p>
+          <p class="card-meta">Coming soon &middot; Research brief</p>
+        </div>
+      </article>
+      <article class="card rv rv-d1">
+        <div class="card-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6"/></svg></div>
+        <div class="card-body">
+          <span class="chip">Policy</span>
+          <h3 class="sub">COFA students and the financial aid barrier in higher education</h3>
+          <p>Micronesian students face unique financial aid exclusions under federal law &mdash; here's what California can do to close that gap.</p>
+          <p class="card-meta">Coming soon &middot; Policy brief</p>
+        </div>
+      </article>
+      <article class="card rv rv-d2">
+        <div class="card-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="card-body">
+          <span class="chip">Coalition</span>
+          <h3 class="sub">What talanoa looks like as an organizing framework</h3>
+          <p>How PIP is building a Pacific-rooted coalition model that centers relationship before strategy &mdash; and why that distinction matters.</p>
+          <p class="card-meta">Coming soon &middot; Community perspective</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="sec" id="donate" style="background:var(--mist);position:relative;overflow:hidden;border-top:1px solid var(--rule-blue)">
-  <div class="glow" style="position:absolute;right:-18vw;top:-18vw;width:56vw;height:56vw;max-width:700px;max-height:700px;border-radius:50%;background:radial-gradient(circle,rgba(47,93,115,.08) 0%,transparent 65%);pointer-events:none" aria-hidden="true"></div>
-  <div class="wrap" style="position:relative;z-index:2">
+<!-- ══ RESEARCH ══ -->
+<section class="sec" id="research" style="background:var(--mist);border-top:1px solid var(--rule-blue)">
+  <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow">03 &mdash; Donate</p>
-      <h2 class="head" style="color:var(--bark)">Fuel the research, advocacy, <em style="color:var(--forest)">and organizing.</em></h2>
-      <p class="lead">Pacific Islanders for Progress is a California nonprofit. Your support funds the disaggregated research, coalition infrastructure, and policy advocacy that makes Pacific Islander communities visible in the decisions that shape opportunity.</p>
+      <p class="eyebrow">Research &amp; Reports</p>
+      <h2 class="head">The evidence <em>behind the advocacy.</em></h2>
+      <p class="lead">Disaggregated data, fact sheets, and publications on Pacific Islander education outcomes in California.</p>
     </div>
-    <div class="ways rv">
-      <div class="way">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
-        <h3>Fund Research</h3>
-        <p>Support the production of disaggregated data, fact sheets, and the flagship report on Pacific Islander education outcomes in California.</p>
-      </div>
-      <div class="way">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <h3>Grow the Coalition</h3>
-        <p>Help us convene partners, host community listening sessions, and build the infrastructure that makes collective advocacy possible.</p>
-      </div>
-      <div class="way">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
-        <h3>Advance Advocacy</h3>
-        <p>Enable PIP to show up at the tables where budgets are written and policies are made &mdash; with community voice and evidence in hand.</p>
-      </div>
+    <div class="empty rv" style="margin-bottom:0">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
+      <h2 class="head">Publications <em>coming soon.</em></h2>
+      <p>Our first fact sheets and reports will be published here as they're released.</p>
+      <a href="#newsletter" class="btn btn-forest">Get notified <span class="arw">&rarr;</span></a>
     </div>
-    <div class="rv rv-d1">
-      <a href="mailto:info@pacificislandersforprogress.org?subject=Donation%20Inquiry" class="btn btn-forest">Give now <span class="arw">&rarr;</span></a>
-      <p style="color:var(--muted);font-size:.78rem;margin-top:1.1rem;font-weight:300">PIP is a California Nonprofit Corporation. Please contact us for donation details.</p>
+  </div>
+</section>
+
+<!-- ══ NEWSLETTER ══ -->
+<section class="sec" id="newsletter" style="background:var(--forest);position:relative;overflow:hidden">
+  <div class="nl rv" style="position:relative;z-index:2">
+    <h2 class="head">Stay connected to <em>the work.</em></h2>
+    <p>Sign up for PIP updates &mdash; new episodes, research releases, policy alerts, and coalition news.</p>
+    <div class="nl-form">
+      <input type="email" placeholder="your@email.com" aria-label="Email address">
+      <button class="btn btn-line-light" onclick="alert('Newsletter sign-up coming soon \u2014 please email info@pacificislandersforprogress.org to stay connected.')">Subscribe <span class="arw">&rarr;</span></button>
     </div>
   </div>
 </section>
@@ -811,14 +905,14 @@ footer::after{
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="about.html#work">Our Work</a></li>
-        <li><a href="resources.html">Resources</a></li>
+        <li><a href="resources.html">Blog</a></li>
         <li><a href="get-involved.html">Get Involved</a></li>
       </ul>
     </div>
     <div class="f-col">
       <h4>Our Work</h4>
       <ul>
-        <li><a href="about.html#work">Research</a></li>
+        <li><a href="about.html#research">Research</a></li>
         <li><a href="about.html#coalition">Coalition</a></li>
         <li><a href="about.html#advocacy">Advocacy</a></li>
       </ul>
