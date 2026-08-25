@@ -671,6 +671,9 @@ footer::after{
 .pod-host{font-size:.82rem;color:rgba(246,234,232,.6);font-weight:300;margin-top:1.1rem}
 
 .eps{display:grid;gap:1px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.18)}
+.ep-live{background:var(--forest);padding:1.5rem 1.6rem 1.7rem}
+.ep-head{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:center;margin-bottom:1.2rem}
+.ep-live iframe{display:block}
 .ep{background:var(--forest);padding:1.5rem 1.6rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.3rem;align-items:center;transition:background .35s}
 .ep:hover{background:rgba(255,255,255,.06)}
 .ep-n{font-family:'Fraunces',serif;font-weight:200;font-size:1.9rem;color:var(--gold);line-height:1;letter-spacing:-.02em;min-width:2.6rem}
@@ -858,27 +861,27 @@ footer::after{
     </div>
 
     <div class="eps rv rv-d1">
-      <div class="ep">
-        <div class="ep-n">01</div>
-        <div>
-          <div class="ep-t">Episode title coming soon</div>
-          <div class="ep-m">Guest name</div>
+      <div class="ep-live">
+        <div class="ep-head">
+          <div class="ep-n">01</div>
+          <div>
+            <div class="ep-t">Why Pacific Islander Civic Engagement Matters</div>
+            <div class="ep-m">Jimina Afuola Sevudredre</div>
+          </div>
         </div>
-        <a href="#" class="ep-play" aria-label="Play episode 1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></a>
-      </div>
-      <div class="ep">
-        <div class="ep-n">02</div>
-        <div>
-          <div class="ep-t">Episode title coming soon</div>
-          <div class="ep-m">Guest name</div>
-        </div>
-        <a href="#" class="ep-play" aria-label="Play episode 2"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></a>
+        <iframe
+          style="border-radius:12px"
+          src="https://open.spotify.com/embed/episode/3Hr2VAI3AmHGhnHoEo9CKV?utm_source=generator"
+          width="100%" height="180" frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          title="Be The Wave — Episode 1"></iframe>
       </div>
     </div>
 
     <div class="pod-subs rv rv-d2">
-      <a href="#" class="btn btn-gold">Listen now <span class="arw">&rarr;</span></a>
-      <a href="#" class="btn btn-line-light">Subscribe</a>
+      <a href="https://open.spotify.com/episode/3Hr2VAI3AmHGhnHoEo9CKV" target="_blank" rel="noopener" class="btn btn-gold">Listen on Spotify <span class="arw">&rarr;</span></a>
+      
     </div>
   </div>
 </section>
