@@ -671,13 +671,27 @@ footer::after{
 .pod-host{font-size:.82rem;color:rgba(246,234,232,.6);font-weight:300;margin-top:1.1rem}
 
 .eps{display:grid;gap:1px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.18)}
-.ep-live{background:var(--forest);padding:1.5rem 1.6rem 1.7rem}
-.ep-head{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:center;margin-bottom:1.2rem}
+.ep-live{background:var(--forest);padding:1.6rem 1.7rem 1.8rem}
+.ep-sum{font-size:.88rem;color:rgba(246,234,232,.78);line-height:1.75;font-weight:300;margin-bottom:1.2rem;max-width:82ch}
+.ep-org{
+  border-left:2px solid var(--gold);padding-left:1.1rem;margin-bottom:1.3rem;
+}
+.ep-org-name{
+  font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.45rem;
+}
+.ep-org p{font-size:.83rem;color:rgba(246,234,232,.68);line-height:1.7;font-weight:300;margin-bottom:.6rem;max-width:80ch}
+.ep-org-link{
+  font-size:.8rem;font-weight:500;color:#fff;display:inline-flex;align-items:center;gap:.35rem;
+  border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:1px;transition:border-color .3s,gap .3s var(--ease);
+}
+.ep-org-link:hover{border-bottom-color:#fff;gap:.6rem}
+.ep-head{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:start;margin-bottom:1.1rem}
 .ep-live iframe{display:block}
 .ep{background:var(--forest);padding:1.5rem 1.6rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.3rem;align-items:center;transition:background .35s}
 .ep:hover{background:rgba(255,255,255,.06)}
 .ep-n{font-family:'Fraunces',serif;font-weight:200;font-size:1.9rem;color:var(--gold);line-height:1;letter-spacing:-.02em;min-width:2.6rem}
-.ep-t{font-family:'Fraunces',serif;font-weight:300;font-size:1.08rem;color:#fff;line-height:1.3;margin-bottom:.3rem}
+.ep-t{font-family:'Fraunces',serif;font-weight:300;font-size:1.22rem;color:#fff;line-height:1.25;margin-bottom:.35rem;letter-spacing:-.01em}
 .ep-m{font-size:.76rem;color:rgba(246,234,232,.55);font-weight:300;letter-spacing:.03em}
 .ep-play{
   width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.35);
@@ -861,13 +875,20 @@ footer::after{
     </div>
 
     <div class="eps rv rv-d1">
-      <div class="ep-live">
+
+      <article class="ep-live">
         <div class="ep-head">
           <div class="ep-n">01</div>
           <div>
-            <div class="ep-t">Why Pacific Islander Civic Engagement Matters</div>
-            <div class="ep-m">Jimina Afuola Sevudredre</div>
+            <h3 class="ep-t">Why Pacific Islander Civic Engagement Matters</h3>
+            <div class="ep-m">Jimina Afuola Sevudredre &middot; Empowering Pacific Islander Communities (EPIC)</div>
           </div>
+        </div>
+        <p class="ep-sum">Jimina of Empowering Pacific Islander Communities (EPIC) joins us for a conversation about why Pacific Islander civic engagement matters, what it means to build political power rooted in community, and why creating space for Pacific Islander voices in the decisions affecting our communities is so important.</p>
+        <div class="ep-org">
+          <div class="ep-org-name">About Empowering Pacific Islander Communities</div>
+          <p>EPIC was established in 2009 by a group of young Native Hawaiian &amp; Pacific Islander (NHPI) leaders who recognized the urgency to address the growing needs of NHPI families. EPIC advances social justice by engaging Native Hawaiian &amp; Pacific Islanders in culture-centered advocacy, leadership development, and research.</p>
+          <a href="https://empoweredpi.org" target="_blank" rel="noopener" class="ep-org-link">empoweredpi.org <span>&rarr;</span></a>
         </div>
         <iframe
           style="border-radius:12px"
@@ -876,14 +897,21 @@ footer::after{
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
           title="Be The Wave — Episode 1"></iframe>
-      </div>
-      <div class="ep-live">
+      </article>
+
+      <article class="ep-live">
         <div class="ep-head">
           <div class="ep-n">02</div>
           <div>
-            <div class="ep-t">ACA 7 and the Fight for Educational Equity</div>
-            <div class="ep-m">Dr. Christopher Nellum</div>
+            <h3 class="ep-t">Closing the Student Opportunity and Achievement Gap</h3>
+            <div class="ep-m">Dr. Christopher Nellum &middot; Executive Director, EdTrust-West</div>
           </div>
+        </div>
+        <p class="ep-sum">Dr. Christopher Nellum, Executive Director of EdTrust-West, joins us to discuss the state of educational equity in California, the history and policy context behind persistent opportunity and achievement gaps, and a proposed statewide policy solution (ACA 7) that could create new opportunities to address disparities affecting students and communities that have historically faced barriers, including Pacific Islander students.</p>
+        <div class="ep-org">
+          <div class="ep-org-name">About EdTrust-West</div>
+          <p>Through research and advocacy, EdTrust-West improves racial equity in education, engages diverse communities dedicated to education equity and justice, and increases political and public will to build an education system where students of color and multilingual learners, especially those experiencing poverty, will thrive.</p>
+          <a href="https://edtrustwest.org" target="_blank" rel="noopener" class="ep-org-link">edtrustwest.org <span>&rarr;</span></a>
         </div>
         <iframe
           style="border-radius:12px"
@@ -892,11 +920,13 @@ footer::after{
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
           title="Be The Wave — Episode 2"></iframe>
-      </div>
+      </article>
+
     </div>
 
     <div class="pod-subs rv rv-d2">
       <a href="https://open.spotify.com/episode/3Hr2VAI3AmHGhnHoEo9CKV" target="_blank" rel="noopener" class="btn btn-gold">Listen on Spotify <span class="arw">&rarr;</span></a>
+      <a href="https://podcasts.apple.com/us/podcast/be-the-wave/id6804875127" target="_blank" rel="noopener" class="btn btn-gold">Listen on Apple Podcasts <span class="arw">&rarr;</span></a>
       
     </div>
   </div>
