@@ -686,6 +686,49 @@ footer::after{
   .pub-cover{max-width:200px}
 }
 
+/* ─── Flipbook ─────────────────────────────────── */
+.flip{margin-top:1.6rem}
+.flip-stage{display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center}
+.flip-page{
+  background:#fff;border-radius:3px;overflow:hidden;
+  box-shadow:0 16px 44px -14px rgba(0,0,0,.5), 0 2px 8px rgba(0,0,0,.2);
+  aspect-ratio:8.5/11;display:grid;place-items:center;
+}
+.flip-page img{width:100%;height:100%;object-fit:contain;display:block;opacity:1;transition:opacity .22s ease}
+.flip-page img.swapping{opacity:0}
+.flip-nav{
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);
+  color:#fff;cursor:pointer;display:grid;place-items:center;
+  transition:all .25s var(--ease);
+}
+.flip-nav svg{width:18px;height:18px}
+.flip-nav:hover:not(:disabled){background:#fff;color:var(--forest);border-color:#fff}
+.flip-nav:disabled{opacity:.25;cursor:default}
+.flip-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin-top:1rem;padding-top:.9rem;border-top:1px solid rgba(255,255,255,.16);
+}
+.flip-count{font-size:.78rem;color:rgba(246,234,232,.7);font-weight:300;letter-spacing:.04em}
+.flip-count span{color:var(--gold)}
+.flip-dots{display:flex;gap:.38rem;flex-wrap:wrap;flex:1;justify-content:center}
+.flip-dot{
+  width:7px;height:7px;border-radius:50%;border:0;padding:0;cursor:pointer;
+  background:rgba(255,255,255,.28);transition:background .25s,transform .25s var(--ease);
+}
+.flip-dot:hover{background:rgba(255,255,255,.6)}
+.flip-dot.on{background:var(--gold);transform:scale(1.35)}
+.flip-dl{
+  font-size:.78rem;font-weight:500;color:#fff;white-space:nowrap;
+  border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:1px;transition:border-color .3s;
+}
+.flip-dl:hover{border-bottom-color:#fff}
+@media(max-width:620px){
+  .flip-stage{grid-template-columns:1fr;gap:.7rem}
+  .flip-nav{display:none}
+  .flip-dots{order:-1;width:100%}
+}
+
 /* ─── Podcast ──────────────────────────────────── */
 #podcast{background:var(--forest);position:relative;overflow:hidden}
 #podcast::after{
@@ -885,6 +928,25 @@ footer::after{
       <a href="PIP_CA-Pacific-Islander-TK12-Brief_2026.pdf" target="_blank" rel="noopener" class="btn btn-forest">Read the brief (PDF) <span class="arw">&rarr;</span></a>
       </div>
     </article>
+
+    <div class="flip rv" id="flip">
+      <div class="flip-stage">
+        <button class="flip-nav flip-prev" id="flipPrev" aria-label="Previous page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="flip-page">
+          <img id="flipImg" src="" alt="" loading="eager">
+        </div>
+        <button class="flip-nav flip-next" id="flipNext" aria-label="Next page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <div class="flip-bar">
+        <span class="flip-count"><span id="flipNow">1</span> / <span id="flipTotal">15</span></span>
+        <div class="flip-dots" id="flipDots"></div>
+        <a href="PIP_CA-Pacific-Islander-TK12-Brief_2026.pdf" target="_blank" rel="noopener" class="flip-dl">Download PDF &darr;</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1074,6 +1136,79 @@ function mtog(){document.getElementById('mobile').classList.toggle('on');documen
 document.querySelectorAll('#mobile a').forEach(a=>a.addEventListener('click',mtog));
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ── Flipbook ── */
+(function(){
+  // EDIT THIS LIST IF THE FILENAMES DIFFER
+  var PAGES = [
+    'PIP%20Brief_pngs.png',
+    'PIP%20Brief_pngs2.png',  'PIP%20Brief_pngs3.png',  'PIP%20Brief_pngs4.png',
+    'PIP%20Brief_pngs5.png',  'PIP%20Brief_pngs6.png',  'PIP%20Brief_pngs7.png',
+    'PIP%20Brief_pngs8.png',  'PIP%20Brief_pngs9.png',  'PIP%20Brief_pngs10.png',
+    'PIP%20Brief_pngs11.png', 'PIP%20Brief_pngs12.png', 'PIP%20Brief_pngs13.png',
+    'PIP%20Brief_pngs14.png', 'PIP%20Brief_pngs15.png'
+  ];
+
+  var wrap = document.getElementById('flip');
+  if(!wrap) return;
+  var img = document.getElementById('flipImg'),
+      now = document.getElementById('flipNow'),
+      tot = document.getElementById('flipTotal'),
+      dots = document.getElementById('flipDots'),
+      prev = document.getElementById('flipPrev'),
+      next = document.getElementById('flipNext'),
+      i = 0;
+
+  tot.textContent = PAGES.length;
+
+  PAGES.forEach(function(_, n){
+    var d = document.createElement('button');
+    d.className = 'flip-dot' + (n === 0 ? ' on' : '');
+    d.setAttribute('aria-label', 'Page ' + (n+1));
+    d.addEventListener('click', function(){ go(n); });
+    dots.appendChild(d);
+  });
+
+  function go(n){
+    if(n < 0 || n >= PAGES.length) return;
+    i = n;
+    img.classList.add('swapping');
+    setTimeout(function(){
+      img.src = PAGES[i];
+      img.alt = 'Page ' + (i+1) + ' of the brief';
+      img.classList.remove('swapping');
+    }, 180);
+    now.textContent = i + 1;
+    prev.disabled = (i === 0);
+    next.disabled = (i === PAGES.length - 1);
+    Array.prototype.forEach.call(dots.children, function(d, n2){
+      d.classList.toggle('on', n2 === i);
+    });
+    // preload neighbour
+    if(PAGES[i+1]){ var p = new Image(); p.src = PAGES[i+1]; }
+  }
+
+  prev.addEventListener('click', function(){ go(i-1); });
+  next.addEventListener('click', function(){ go(i+1); });
+  document.addEventListener('keydown', function(e){
+    var r = wrap.getBoundingClientRect();
+    if(r.top > window.innerHeight || r.bottom < 0) return;
+    if(e.key === 'ArrowLeft') go(i-1);
+    if(e.key === 'ArrowRight') go(i+1);
+  });
+
+  // swipe
+  var x0 = null;
+  wrap.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+  wrap.addEventListener('touchend', function(e){
+    if(x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if(Math.abs(dx) > 45) go(dx < 0 ? i+1 : i-1);
+    x0 = null;
+  });
+
+  go(0);
+})();
 </script>
 </body>
 </html>
